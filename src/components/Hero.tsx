@@ -4,11 +4,11 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
   const roles = [
-    "Developer",
-    "Researcher", 
-    "n Engineer",
-    "n Innovator",
-    "Problem Solver"
+    "a Developer",
+    "a Researcher", 
+    "an Engineer",
+    "an Innovator",
+    "a Problem Solver"
   ];
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Hero = () => {
 
           {/* Animated Role */}
           <div className="text-display text-foreground h-20 flex items-center justify-center">
-            <span>I'm a </span>
+            <span>I'm </span>
             <span 
               key={currentRole}
               className="text-accent font-bold ml-2 animate-fade-in"
@@ -74,21 +74,21 @@ const Hero = () => {
           {/* Social Links */}
           <div className="flex justify-center space-x-6 pt-8">
             <a 
-              href="https://github.com/shrishant" 
+              href="https://github.com/shrishantrh" 
               target="_blank"
               className="p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
             >
               <Github size={24} />
             </a>
             <a 
-              href="https://linkedin.com/in/shrishant-hattarki" 
+              href="https://www.linkedin.com/in/shrishant-hattarki-15406a355/" 
               target="_blank"
               className="p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
             >
               <Linkedin size={24} />
             </a>
             <a 
-              href="mailto:shrishant@illinois.edu"
+              href="mailto:shatt@illinois.edu"
               className="p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
             >
               <Mail size={24} />
