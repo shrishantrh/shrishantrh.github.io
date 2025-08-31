@@ -63,6 +63,10 @@ export default {
 				'hero-gradient-start': 'hsl(var(--hero-gradient-start))',
 				'hero-gradient-end': 'hsl(var(--hero-gradient-end))',
 			},
+			boxShadow: {
+				'glow': '0 0 40px hsl(var(--primary-glow) / 0.15)',
+				'card': '0 10px 30px -10px hsl(220 30% 2% / 0.3)',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
