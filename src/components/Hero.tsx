@@ -29,10 +29,10 @@ const Hero = () => {
           {/* Main Heading */}
           <div className="space-y-4">
             <h1 className="text-hero bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
-              Shrishant Hattarki
+              [⚠ W.I.P] Shrishant Hattarki
             </h1>
             <div className="text-subheading text-muted-foreground">
-              CS + BioE Student at{" "}
+              CS Student at{" "}
               <span className="text-accent font-semibold">UIUC</span>
             </div>
           </div>
