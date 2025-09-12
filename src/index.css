@@ -65,12 +65,10 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none !important; /* Hide default cursor */
   }
   
   body {
     @apply bg-background text-foreground font-inter antialiased;
-    cursor: none !important; /* Ensure body also has no cursor */
   }
   
   html {
@@ -127,19 +125,10 @@
     @apply absolute inset-0 rounded-xl bg-gradient-to-r from-primary-glow/20 to-accent-glow/20 blur-xl -z-10;
     content: '';
   }
-
-  /* Interactive Elements - Enhanced for Custom Cursor */
-  .interactive {
-    @apply cursor-none;
-  }
   
-  button, a, input, textarea, .hover-lift, .surface-card {
-    @apply cursor-none;
-  }
-
   /* Enhanced Button Variants */
   .btn-hero {
-    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-glow relative overflow-hidden cursor-none;
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-glow relative overflow-hidden;
   }
   
   .btn-hero::before {

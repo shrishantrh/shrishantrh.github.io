@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 import { useMousePosition } from "@/hooks/useScrollAnimation";
-import MagneticButton from "@/components/MagneticButton";
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -74,20 +73,19 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <MagneticButton 
+            <button 
               onClick={scrollToAbout}
               className="btn-hero group"
-              strength={0.4}
             >
               <span className="relative z-10">Explore My Work</span>
-            </MagneticButton>
-            <MagneticButton
-              onClick={() => window.open('/resume.pdf', '_blank')}
+            </button>
+            <a 
+              href="/resume.pdf" 
+              target="_blank"
               className="btn-secondary"
-              strength={0.3}
             >
               Download Resume
-            </MagneticButton>
+            </a>
           </div>
 
           {/* Social Links */}
