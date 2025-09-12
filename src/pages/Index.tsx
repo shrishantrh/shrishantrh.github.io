@@ -11,6 +11,7 @@ import ParticleBackground from "@/components/ParticleBackground";
 import ScrollProgress from "@/components/ScrollProgress";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import InteractiveBackground from "@/components/InteractiveBackground";
+import CustomCursor from "@/components/CustomCursor";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState({});
@@ -38,6 +39,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background bg-geometric relative overflow-x-hidden">
+      <CustomCursor />
       <InteractiveBackground />
       <ParticleBackground />
       <ScrollProgress />
