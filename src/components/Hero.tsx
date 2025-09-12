@@ -1,8 +1,12 @@
-import { useState, useEffect } from "react";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react";
+import { useMousePosition } from "@/hooks/useScrollAnimation";
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
+  const [isTyping, setIsTyping] = useState(false);
+  const mousePosition = useMousePosition();
+  
   const roles = [
     "a Developer",
     "a Researcher", 
@@ -13,14 +17,22 @@ const Hero = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length);
+      setIsTyping(true);
+      setTimeout(() => {
+        setCurrentRole((prev) => (prev + 1) % roles.length);
+        setIsTyping(false);
+      }, 500);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToAbout = () => {
+  const scrollToAbout = useCallback(() => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
+
+  const calculateParallax = useCallback((speed: number) => {
+    return mousePosition.x * speed * 0.02;
+  }, [mousePosition.x]);
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
@@ -40,12 +52,17 @@ const Hero = () => {
           {/* Animated Role */}
           <div className="text-display text-foreground h-20 flex items-center justify-center">
             <span>I'm </span>
-            <span 
-              key={currentRole}
-              className="text-accent font-bold ml-2 animate-fade-in"
-            >
-              {roles[currentRole]}
-            </span>
+            <div className="relative ml-2">
+              <span 
+                key={currentRole}
+                className={`text-accent font-bold transition-all duration-500 ${
+                  isTyping ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                }`}
+              >
+                {roles[currentRole]}
+              </span>
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 blur-lg opacity-50 animate-pulse" />
+            </div>
           </div>
 
           {/* Description */}
@@ -58,9 +75,9 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button 
               onClick={scrollToAbout}
-              className="btn-hero"
+              className="btn-hero group"
             >
-              Explore My Work
+              <span className="relative z-10">Explore My Work</span>
             </button>
             <a 
               href="/resume.pdf" 
@@ -107,10 +124,29 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div 
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"
+          style={{ transform: `translateX(${calculateParallax(0.5)}px)` }}
+        />
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"
+          style={{ transform: `translateX(${calculateParallax(-0.3)}px)` }}
+        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Sparkles 
+            className="text-accent/20 animate-pulse" 
+            size={200}
+            style={{ 
+              transform: `rotate(${mousePosition.x * 0.01}deg) translateX(${calculateParallax(0.2)}px)`
+            }}
+          />
+        </div>
+        {/* Floating geometric shapes */}
+        <div className="absolute top-20 right-20 w-4 h-4 bg-accent/30 rotate-45 animate-bounce delay-300" />
+        <div className="absolute bottom-32 left-32 w-3 h-3 bg-primary/40 rounded-full animate-ping delay-700" />
+        <div className="absolute top-2/3 right-1/3 w-2 h-8 bg-accent/25 animate-pulse delay-1000" />
       </div>
     </section>
   );

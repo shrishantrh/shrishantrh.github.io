@@ -126,9 +126,22 @@
     content: '';
   }
   
-  /* Interactive Elements */
+  /* Enhanced Button Variants */
   .btn-hero {
-    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-glow;
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-glow relative overflow-hidden;
+  }
+  
+  .btn-hero::before {
+    @apply absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 transition-opacity duration-300;
+    content: '';
+  }
+  
+  .btn-hero:hover::before {
+    @apply opacity-100;
+  }
+  
+  .btn-hero span {
+    @apply relative z-10;
   }
   
   .btn-secondary {

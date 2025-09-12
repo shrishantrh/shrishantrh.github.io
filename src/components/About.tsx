@@ -1,14 +1,25 @@
-import { Brain, Code, Heart } from "lucide-react";
+import { Brain, Code, Heart, TrendingUp, Users, Zap } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const About = () => {
+  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { elementRef: statsRef, isVisible: statsVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { elementRef: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.1 });
   return (
     <section className="py-20 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-display mb-6">About Me</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-1000 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <h2 className="text-display mb-6 bg-gradient-to-r from-foreground via-accent to-foreground bg-clip-text text-transparent">
+              About Me
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               I'm a freshman at the University of Illinois Urbana-Champaign, pursuing a unique 
               dual degree in Computer Science and Bioengineering—bridging the gap between 
               cutting-edge technology and life-saving healthcare innovation.
@@ -35,61 +46,83 @@ const About = () => {
               </div>
 
               {/* Key Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-6">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-accent">3+</div>
+              <div 
+                ref={statsRef}
+                className={`grid grid-cols-3 gap-4 pt-6 transition-all duration-1000 delay-300 ${
+                  statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                }`}
+              >
+                <div className="text-center group">
+                  <div className="text-2xl font-bold text-accent group-hover:scale-110 transition-transform duration-300 relative">
+                    3+
+                    <TrendingUp className="absolute -top-2 -right-6 text-accent/60" size={16} />
+                  </div>
                   <div className="text-sm text-muted-foreground">Years Experience</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-accent">10+</div>
+                <div className="text-center group">
+                  <div className="text-2xl font-bold text-accent group-hover:scale-110 transition-transform duration-300 relative">
+                    10+
+                    <Zap className="absolute -top-2 -right-6 text-accent/60" size={16} />
+                  </div>
                   <div className="text-sm text-muted-foreground">Projects Built</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-accent">1</div>
+                <div className="text-center group">
+                  <div className="text-2xl font-bold text-accent group-hover:scale-110 transition-transform duration-300 relative">
+                    1
+                    <Users className="absolute -top-2 -right-6 text-accent/60" size={16} />
+                  </div>
                   <div className="text-sm text-muted-foreground">Publication</div>
                 </div>
               </div>
             </div>
 
             {/* Visual Elements */}
-            <div className="space-y-6">
-              <div className="surface-card surface-glow p-6 hover-lift">
+            <div 
+              ref={cardsRef}
+              className={`space-y-6 transition-all duration-1000 delay-500 ${
+                cardsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+              }`}
+            >
+              <div className="surface-card surface-glow p-6 hover-lift group cursor-pointer relative overflow-hidden">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="p-3 bg-accent/20 rounded-lg">
-                    <Code className="text-accent" size={24} />
+                  <div className="p-3 bg-gradient-to-br from-accent/20 to-primary/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                    <Code className="text-accent group-hover:rotate-6 transition-transform duration-300" size={24} />
                   </div>
-                  <h4 className="text-lg font-semibold">Computer Science</h4>
+                  <h4 className="text-lg font-semibold group-hover:text-accent transition-colors">Computer Science</h4>
                 </div>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Building robust, scalable software solutions with expertise in 
                   AI/ML, web development, and system architecture.
                 </p>
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              <div className="surface-card surface-glow p-6 hover-lift">
+              <div className="surface-card surface-glow p-6 hover-lift group cursor-pointer relative overflow-hidden">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="p-3 bg-accent/20 rounded-lg">
-                    <Heart className="text-accent" size={24} />
+                  <div className="p-3 bg-gradient-to-br from-accent/20 to-primary/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                    <Heart className="text-accent group-hover:animate-pulse transition-all duration-300" size={24} />
                   </div>
-                  <h4 className="text-lg font-semibold">Bioengineering</h4>
+                  <h4 className="text-lg font-semibold group-hover:text-accent transition-colors">Bioengineering</h4>
                 </div>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Applying engineering principles to biological systems, 
                   focused on medical devices and healthcare technologies.
                 </p>
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              <div className="surface-card surface-glow p-6 hover-lift">
+              <div className="surface-card surface-glow p-6 hover-lift group cursor-pointer relative overflow-hidden">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="p-3 bg-accent/20 rounded-lg">
-                    <Brain className="text-accent" size={24} />
+                  <div className="p-3 bg-gradient-to-br from-accent/20 to-primary/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                    <Brain className="text-accent group-hover:animate-bounce transition-all duration-300" size={24} />
                   </div>
-                  <h4 className="text-lg font-semibold">AI/ML Research</h4>
+                  <h4 className="text-lg font-semibold group-hover:text-accent transition-colors">AI/ML Research</h4>
                 </div>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Developing machine learning models for medical diagnosis, 
                   computer vision, and predictive healthcare analytics.
                 </p>
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
           </div>

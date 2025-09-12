@@ -7,6 +7,10 @@ import Skills from "@/components/Skills";
 import Research from "@/components/Research";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
+import ParticleBackground from "@/components/ParticleBackground";
+import ScrollProgress from "@/components/ScrollProgress";
+import FloatingActionButton from "@/components/FloatingActionButton";
+import InteractiveBackground from "@/components/InteractiveBackground";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState({});
@@ -33,8 +37,12 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background bg-geometric">
+    <div className="min-h-screen bg-background bg-geometric relative overflow-x-hidden">
+      <InteractiveBackground />
+      <ParticleBackground />
+      <ScrollProgress />
       <Navigation />
+      <FloatingActionButton />
       
       <main>
         <section id="hero">
