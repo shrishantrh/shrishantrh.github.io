@@ -94,10 +94,6 @@ const Skills = () => {
             </p>
           </motion.div>
 
-          {/* 3D Skills Visualization for Desktop */}
-          <div className="mb-16 hidden lg:block">
-            <SkillsVisualization className="h-96" />
-          </div>
 
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Category Selector */}

@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { useMousePosition } from "@/hooks/useScrollAnimation";
-import { Scene3D } from "@/components/three/Scene3D";
 import { MagneticButton } from "@/components/enhanced/MagneticButton";
 
 const Hero = () => {
@@ -38,10 +37,7 @@ const Hero = () => {
   }, [mousePosition.x]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* 3D Background Scene */}
-      <Scene3D className="absolute inset-0 -z-10 opacity-40" />
-      
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-geometric">
       <div className="container mx-auto px-6 text-center">
         <motion.div 
           className="space-y-8"
@@ -127,27 +123,39 @@ const Hero = () => {
           </motion.div>
 
           {/* Social Links */}
-          <div className="flex justify-center space-x-6 pt-8">
-            <a 
-              href="https://github.com/shrishantrh" 
-              target="_blank"
-              className="p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
+          <div className="flex justify-center space-x-4 pt-8">
+            <MagneticButton 
+              className="p-4 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300"
             >
-              <Github size={24} />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/shrishant-hattarki-15406a355/" 
-              target="_blank"
-              className="p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
+              <a 
+                href="https://github.com/shrishantrh" 
+                target="_blank"
+                className="block w-full h-full"
+              >
+                <Github size={24} />
+              </a>
+            </MagneticButton>
+            <MagneticButton 
+              className="p-4 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300"
             >
-              <Linkedin size={24} />
-            </a>
-            <a 
-              href="mailto:shatt@illinois.edu"
-              className="p-3 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
+              <a 
+                href="https://www.linkedin.com/in/shrishant-hattarki-15406a355/" 
+                target="_blank"
+                className="block w-full h-full"
+              >
+                <Linkedin size={24} />
+              </a>
+            </MagneticButton>
+            <MagneticButton 
+              className="p-4 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300"
             >
-              <Mail size={24} />
-            </a>
+              <a 
+                href="mailto:shatt@illinois.edu"
+                className="block w-full h-full"
+              >
+                <Mail size={24} />
+              </a>
+            </MagneticButton>
           </div>
         </motion.div>
 

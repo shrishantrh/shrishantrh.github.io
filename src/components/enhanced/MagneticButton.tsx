@@ -22,7 +22,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   
-  const springConfig = { damping: 15, stiffness: 150, mass: 0.5 };
+  const springConfig = { damping: 12, stiffness: 200, mass: 0.3 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
@@ -36,8 +36,12 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
     const deltaX = e.clientX - centerX;
     const deltaY = e.clientY - centerY;
     
-    x.set(deltaX * strength);
-    y.set(deltaY * strength);
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    const maxDistance = 100;
+    const magneticStrength = Math.min(distance / maxDistance, 1) * strength;
+    
+    x.set(deltaX * magneticStrength);
+    y.set(deltaY * magneticStrength);
   };
 
   const handleMouseLeave = () => {

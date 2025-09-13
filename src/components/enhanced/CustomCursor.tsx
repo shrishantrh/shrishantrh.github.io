@@ -8,7 +8,7 @@ export const CustomCursor: React.FC = () => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   
-  const springConfig = { damping: 25, stiffness: 700 };
+  const springConfig = { damping: 20, stiffness: 400, mass: 0.2 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -56,18 +56,24 @@ export const CustomCursor: React.FC = () => {
   const variants = {
     default: {
       scale: 1,
-      backgroundColor: 'rgba(6, 182, 212, 0.8)',
+      backgroundColor: 'rgba(6, 182, 212, 0.6)',
       mixBlendMode: 'difference' as const,
+      borderWidth: 2,
+      borderColor: 'rgba(6, 182, 212, 0.4)',
     },
     button: {
-      scale: 2,
-      backgroundColor: 'rgba(79, 70, 229, 0.6)',
+      scale: 2.5,
+      backgroundColor: 'rgba(79, 70, 229, 0.3)',
       mixBlendMode: 'normal' as const,
+      borderWidth: 2,
+      borderColor: 'rgba(79, 70, 229, 0.8)',
     },
     link: {
-      scale: 1.5,
-      backgroundColor: 'rgba(16, 185, 129, 0.6)',
+      scale: 2,
+      backgroundColor: 'rgba(16, 185, 129, 0.3)',
       mixBlendMode: 'normal' as const,
+      borderWidth: 2,
+      borderColor: 'rgba(16, 185, 129, 0.8)',
     }
   };
 
@@ -75,32 +81,32 @@ export const CustomCursor: React.FC = () => {
     <>
       {/* Main cursor */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] hidden md:block border-2"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
         }}
         animate={cursorVariant}
         variants={variants}
-        transition={{ type: "spring", stiffness: 500, damping: 28 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
       />
       
       {/* Cursor trail */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9998] hidden md:block"
+        className="fixed top-0 left-0 w-1 h-1 rounded-full pointer-events-none z-[9998] hidden md:block"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
-          translateX: 12,
-          translateY: 12,
+          translateX: 15,
+          translateY: 15,
         }}
         animate={{
-          scale: isHovering ? 0.5 : 1,
-          opacity: isHovering ? 0.5 : 0.8,
+          scale: isHovering ? 0.3 : 1,
+          opacity: isHovering ? 0.3 : 0.9,
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.05 }}
       >
-        <div className="w-full h-full bg-accent rounded-full opacity-60" />
+        <div className="w-full h-full bg-accent rounded-full" />
       </motion.div>
     </>
   );
