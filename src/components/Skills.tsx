@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Code, Database, Brain, Wrench, Globe, Microscope } from "lucide-react";
+import { motion } from "framer-motion";
+import { SkillsVisualization } from "@/components/enhanced/SkillsVisualization";
+import { useAdvancedAnimation } from "@/hooks/useAdvancedAnimation";
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState(0);
+  const { ref, shouldAnimate } = useAdvancedAnimation({ delay: 0.2 });
 
   const skillCategories = [
     {
@@ -73,16 +77,26 @@ const Skills = () => {
   ];
 
   return (
-    <section className="py-20 relative">
+    <section ref={ref} className="py-20 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-display mb-6">Technical Skills</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               A comprehensive toolkit spanning computer science, bioengineering, 
               and everything in between.
             </p>
+          </motion.div>
+
+          {/* 3D Skills Visualization for Desktop */}
+          <div className="mb-16 hidden lg:block">
+            <SkillsVisualization className="h-96" />
           </div>
 
           <div className="grid lg:grid-cols-4 gap-8">
@@ -92,7 +106,7 @@ const Skills = () => {
                 {skillCategories.map((category, index) => {
                   const Icon = category.icon;
                   return (
-                    <button
+                    <motion.button
                       key={index}
                       onClick={() => setActiveCategory(index)}
                       className={`w-full text-left p-4 rounded-lg transition-all duration-300 ${
@@ -100,12 +114,14 @@ const Skills = () => {
                           ? 'bg-accent/20 text-accent border border-accent/30'
                           : 'bg-secondary/50 text-muted-foreground hover:bg-secondary/80 border border-transparent'
                       }`}
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex items-center space-x-3">
                         <Icon size={20} />
                         <span className="font-medium">{category.title}</span>
                       </div>
-                    </button>
+                    </motion.button>
                   );
                 })}
               </div>
@@ -113,7 +129,13 @@ const Skills = () => {
 
             {/* Skills Display */}
             <div className="lg:col-span-3">
-              <div className="surface-card p-8">
+              <motion.div 
+                className="surface-card p-8"
+                key={activeCategory}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4 }}
+              >
                 <div className="flex items-center space-x-4 mb-8">
                   <div className={`p-3 rounded-lg bg-gradient-to-r ${skillCategories[activeCategory].color}`}>
                     {(() => {
@@ -128,7 +150,13 @@ const Skills = () => {
 
                 <div className="space-y-6">
                   {skillCategories[activeCategory].skills.map((skill, index) => (
-                    <div key={index} className="space-y-2">
+                    <motion.div 
+                      key={index} 
+                      className="space-y-2"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
                       <div className="flex justify-between items-center">
                         <div>
                           <h4 className="font-semibold text-foreground">{skill.name}</h4>
@@ -140,34 +168,50 @@ const Skills = () => {
                       {/* Skill Bar */}
                       <div className="relative">
                         <div className="w-full bg-secondary/50 rounded-full h-2">
-                          <div 
-                            className={`h-2 bg-gradient-to-r ${skillCategories[activeCategory].color} rounded-full transition-all duration-1000 ease-out`}
-                            style={{ width: `${skill.level}%` }}
+                          <motion.div 
+                            className={`h-2 bg-gradient-to-r ${skillCategories[activeCategory].color} rounded-full`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${skill.level}%` }}
+                            transition={{ duration: 1, delay: index * 0.1, ease: "easeOut" }}
                           />
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Additional Skills Summary */}
-          <div className="mt-16 grid md:grid-cols-3 gap-6">
-            <div className="surface-card p-6 text-center">
+          <motion.div 
+            className="mt-16 grid md:grid-cols-3 gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <motion.div 
+              className="surface-card p-6 text-center"
+              whileHover={{ scale: 1.05, y: -5 }}
+            >
               <div className="text-2xl font-bold text-accent mb-2">5+</div>
               <div className="text-sm text-muted-foreground">Programming Languages</div>
-            </div>
-            <div className="surface-card p-6 text-center">
-                    <div className="text-2xl font-bold text-accent mb-2">15+</div>
-                    <div className="text-sm text-muted-foreground">Frameworks & Libraries</div>
-                  </div>
-                  <div className="surface-card p-6 text-center">
-                    <div className="text-2xl font-bold text-accent mb-2">20+</div>
-                    <div className="text-sm text-muted-foreground">Tools & Technologies</div>
-            </div>
-          </div>
+            </motion.div>
+            <motion.div 
+              className="surface-card p-6 text-center"
+              whileHover={{ scale: 1.05, y: -5 }}
+            >
+              <div className="text-2xl font-bold text-accent mb-2">15+</div>
+              <div className="text-sm text-muted-foreground">Frameworks & Libraries</div>
+            </motion.div>
+            <motion.div 
+              className="surface-card p-6 text-center"
+              whileHover={{ scale: 1.05, y: -5 }}
+            >
+              <div className="text-2xl font-bold text-accent mb-2">20+</div>
+              <div className="text-sm text-muted-foreground">Tools & Technologies</div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

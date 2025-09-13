@@ -64,15 +64,20 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border cursor-none;
   }
   
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    @apply bg-background text-foreground font-inter antialiased cursor-none;
   }
   
   html {
     scroll-behavior: smooth;
+  }
+  
+  /* Hide default cursor on interactive elements */
+  button, a, input, textarea, [role="button"] {
+    cursor: none !important;
   }
   
   /* Custom Scrollbar */
