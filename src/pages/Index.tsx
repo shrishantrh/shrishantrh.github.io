@@ -12,6 +12,8 @@ import ScrollProgress from "@/components/ScrollProgress";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import InteractiveBackground from "@/components/InteractiveBackground";
 import { CustomCursor } from "@/components/enhanced/CustomCursor";
+import { InteractiveParticles } from "@/components/enhanced/InteractiveParticles";
+import { ScrollProvider } from "@/contexts/ScrollContext";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState({});
@@ -38,44 +40,47 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background bg-geometric relative overflow-x-hidden cursor-none">
-      <CustomCursor />
-      <InteractiveBackground />
-      <ParticleBackground />
-      <ScrollProgress />
-      <Navigation />
-      <FloatingActionButton />
-      
-      <main>
-        <section id="hero">
-          <Hero />
-        </section>
+    <ScrollProvider>
+      <div className="min-h-screen bg-background bg-geometric relative overflow-x-hidden cursor-none">
+        <CustomCursor />
+        <InteractiveParticles />
+        <InteractiveBackground />
+        <ParticleBackground />
+        <ScrollProgress />
+        <Navigation />
+        <FloatingActionButton />
         
-        <section id="about" className={`${isVisible['about'] ? 'animate-fade-in' : 'opacity-0'}`}>
-          <About />
-        </section>
-        
-        <section id="experience" className={`${isVisible['experience'] ? 'animate-fade-in' : 'opacity-0'}`}>
-          <Experience />
-        </section>
-        
-        <section id="projects" className={`${isVisible['projects'] ? 'animate-fade-in' : 'opacity-0'}`}>
-          <Projects />
-        </section>
-        
-        <section id="skills" className={`${isVisible['skills'] ? 'animate-fade-in' : 'opacity-0'}`}>
-          <Skills />
-        </section>
-        
-        <section id="research" className={`${isVisible['research'] ? 'animate-fade-in' : 'opacity-0'}`}>
-          <Research />
-        </section>
-        
-        <section id="contact" className={`${isVisible['contact'] ? 'animate-fade-in' : 'opacity-0'}`}>
-          <Contact />
-        </section>
-      </main>
-    </div>
+        <main>
+          <section id="hero">
+            <Hero />
+          </section>
+          
+          <section id="about" className={`${isVisible['about'] ? 'animate-fade-in' : 'opacity-0'}`}>
+            <About />
+          </section>
+          
+          <section id="experience" className={`${isVisible['experience'] ? 'animate-fade-in' : 'opacity-0'}`}>
+            <Experience />
+          </section>
+          
+          <section id="projects" className={`${isVisible['projects'] ? 'animate-fade-in' : 'opacity-0'}`}>
+            <Projects />
+          </section>
+          
+          <section id="skills" className={`${isVisible['skills'] ? 'animate-fade-in' : 'opacity-0'}`}>
+            <Skills />
+          </section>
+          
+          <section id="research" className={`${isVisible['research'] ? 'animate-fade-in' : 'opacity-0'}`}>
+            <Research />
+          </section>
+          
+          <section id="contact" className={`${isVisible['contact'] ? 'animate-fade-in' : 'opacity-0'}`}>
+            <Contact />
+          </section>
+        </main>
+      </div>
+    </ScrollProvider>
   );
 };
 

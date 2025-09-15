@@ -1,213 +1,154 @@
-import { useState } from "react";
-import { Code, Database, Brain, Wrench, Globe, Microscope } from "lucide-react";
+import { AnimatedCard } from "@/components/enhanced/AnimatedCard";
+import { AdvancedSkillMeter } from "@/components/enhanced/AdvancedSkillMeter";
+import { MorphingShape } from "@/components/enhanced/MorphingShape";
 import { motion } from "framer-motion";
-import { SkillsVisualization } from "@/components/enhanced/SkillsVisualization";
-import { useAdvancedAnimation } from "@/hooks/useAdvancedAnimation";
+import { Code, Database, Brain, Wrench } from "lucide-react";
+import { useSection } from "@/contexts/ScrollContext";
 
 const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState(0);
-  const { ref, shouldAnimate } = useAdvancedAnimation({ delay: 0.2 });
+  const { ref: sectionRef } = useSection('skills');
 
   const skillCategories = [
     {
-      title: "Programming Languages",
+      name: "Frontend Development",
       icon: Code,
-      color: "from-accent to-accent-glow",
       skills: [
-        { name: "Python", level: 95, description: "AI/ML, Data Science, Backend Development" },
-        { name: "JavaScript/TypeScript", level: 90, description: "Full-stack web development, React ecosystem" },
-        { name: "Java", level: 85, description: "Enterprise applications, Android development" },
-        { name: "C++", level: 80, description: "System programming, competitive programming" },
-        { name: "R", level: 75, description: "Statistical analysis, bioinformatics" },
-        { name: "MATLAB", level: 70, description: "Scientific computing, signal processing" }
+        "React/Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "GraphQL",
+        "WebGL/Three.js"
       ]
     },
     {
-      title: "AI/ML & Data Science",
+      name: "Backend Development", 
+      icon: Database,
+      skills: [
+        "Node.js",
+        "Python",
+        "PostgreSQL",
+        "MongoDB",
+        "Docker",
+        "AWS/Cloud Services"
+      ]
+    },
+    {
+      name: "AI/ML Engineering",
       icon: Brain,
-      color: "from-primary to-primary-glow",
       skills: [
-        { name: "TensorFlow/Keras", level: 90, description: "Deep learning, neural networks" },
-        { name: "PyTorch", level: 85, description: "Research, computer vision models" },
-        { name: "Scikit-learn", level: 88, description: "Machine learning algorithms" },
-        { name: "Computer Vision", level: 85, description: "OpenCV, medical imaging" },
-        { name: "NLP", level: 75, description: "Text analysis, transformers" },
-        { name: "Data Analysis", level: 90, description: "Pandas, NumPy, statistical modeling" }
+        "TensorFlow",
+        "PyTorch",
+        "Computer Vision",
+        "NLP",
+        "Data Science",
+        "Statistical Analysis"
       ]
     },
     {
-      title: "Web Development",
-      icon: Globe,
-      color: "from-accent-glow to-primary",
-      skills: [
-        { name: "React/Next.js", level: 92, description: "Modern web applications, SSR/SSG" },
-        { name: "Node.js", level: 88, description: "Backend APIs, microservices" },
-        { name: "Tailwind CSS", level: 90, description: "Responsive design, component libraries" },
-        { name: "GraphQL", level: 75, description: "API design, data fetching" },
-        { name: "AWS/Cloud", level: 80, description: "Deployment, serverless, containers" },
-        { name: "MongoDB/SQL", level: 85, description: "Database design, optimization" }
-      ]
-    },
-    {
-      title: "Bioengineering",
-      icon: Microscope,
-      color: "from-primary-glow to-accent",
-      skills: [
-        { name: "Medical Imaging", level: 80, description: "MRI/CT analysis, DICOM processing" },
-        { name: "Bioinformatics", level: 75, description: "Genomics, sequence analysis" },
-        { name: "MATLAB/Simulink", level: 85, description: "Biomedical signal processing" },
-        { name: "CAD/SolidWorks", level: 70, description: "Medical device design" },
-        { name: "Statistical Analysis", level: 85, description: "Clinical data, R/Python" },
-        { name: "Laboratory Techniques", level: 75, description: "Cell culture, microscopy" }
-      ]
-    },
-    {
-      title: "Tools & Technologies",
+      name: "Tools & DevOps",
       icon: Wrench,
-      color: "from-accent to-primary-glow",
       skills: [
-        { name: "Git/GitHub", level: 95, description: "Version control, collaboration" },
-        { name: "Docker", level: 80, description: "Containerization, deployment" },
-        { name: "Linux/Unix", level: 85, description: "System administration, shell scripting" },
-        { name: "Arduino/Raspberry Pi", level: 88, description: "IoT, embedded systems" },
-        { name: "Figma", level: 75, description: "UI/UX design, prototyping" },
-        { name: "Jupyter", level: 90, description: "Data analysis, research notebooks" }
+        "Git/GitHub",
+        "Docker",
+        "Linux/Unix",
+        "CI/CD",
+        "Figma",
+        "Arduino/Raspberry Pi"
       ]
     }
   ];
 
+  const skillsData = [
+    { name: 'React/Next.js', level: 95, category: 'frontend' as const },
+    { name: 'TypeScript', level: 90, category: 'frontend' as const },
+    { name: 'Python', level: 88, category: 'backend' as const },
+    { name: 'Node.js', level: 85, category: 'backend' as const },
+    { name: 'Machine Learning', level: 82, category: 'ai' as const },
+    { name: 'TensorFlow', level: 78, category: 'ai' as const },
+    { name: 'Docker', level: 80, category: 'tools' as const },
+    { name: 'AWS', level: 75, category: 'tools' as const },
+    { name: 'Tailwind CSS', level: 92, category: 'frontend' as const },
+    { name: 'PostgreSQL', level: 83, category: 'backend' as const },
+    { name: 'PyTorch', level: 76, category: 'ai' as const },
+    { name: 'Git/GitHub', level: 90, category: 'tools' as const },
+  ];
+
   return (
-    <section ref={ref} className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <motion.div 
-            className="text-center mb-16"
+    <section ref={sectionRef} className="py-20 bg-muted/30 relative overflow-hidden">
+      {/* Background morphing shapes */}
+      <div className="absolute top-20 right-20 opacity-30">
+        <MorphingShape size={300} color="#06b6d4" complexity={6} speed={0.01} />
+      </div>
+      <div className="absolute bottom-20 left-20 opacity-20">
+        <MorphingShape size={200} color="#4f46e5" complexity={8} speed={0.015} />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-display text-foreground mb-4"
             initial={{ opacity: 0, y: 30 }}
-            animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <h2 className="text-display mb-6">Technical Skills</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              A comprehensive toolkit spanning computer science, bioengineering, 
-              and everything in between.
-            </p>
-          </motion.div>
-
-
-          <div className="grid lg:grid-cols-4 gap-8">
-            {/* Category Selector */}
-            <div className="lg:col-span-1">
-              <div className="space-y-2 sticky top-24">
-                {skillCategories.map((category, index) => {
-                  const Icon = category.icon;
-                  return (
-                    <motion.button
-                      key={index}
-                      onClick={() => setActiveCategory(index)}
-                      className={`w-full text-left p-4 rounded-lg transition-all duration-300 ${
-                        activeCategory === index
-                          ? 'bg-accent/20 text-accent border border-accent/30'
-                          : 'bg-secondary/50 text-muted-foreground hover:bg-secondary/80 border border-transparent'
-                      }`}
-                      whileHover={{ scale: 1.02, x: 5 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <Icon size={20} />
-                        <span className="font-medium">{category.title}</span>
-                      </div>
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Skills Display */}
-            <div className="lg:col-span-3">
-              <motion.div 
-                className="surface-card p-8"
-                key={activeCategory}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="flex items-center space-x-4 mb-8">
-                  <div className={`p-3 rounded-lg bg-gradient-to-r ${skillCategories[activeCategory].color}`}>
-                    {(() => {
-                      const IconComponent = skillCategories[activeCategory].icon;
-                      return <IconComponent className="text-white" size={24} />;
-                    })()}
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">
-                    {skillCategories[activeCategory].title}
-                  </h3>
-                </div>
-
-                <div className="space-y-6">
-                  {skillCategories[activeCategory].skills.map((skill, index) => (
-                    <motion.div 
-                      key={index} 
-                      className="space-y-2"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <h4 className="font-semibold text-foreground">{skill.name}</h4>
-                          <p className="text-sm text-muted-foreground">{skill.description}</p>
-                        </div>
-                        <span className="text-accent font-bold">{skill.level}%</span>
-                      </div>
-                      
-                      {/* Skill Bar */}
-                      <div className="relative">
-                        <div className="w-full bg-secondary/50 rounded-full h-2">
-                          <motion.div 
-                            className={`h-2 bg-gradient-to-r ${skillCategories[activeCategory].color} rounded-full`}
-                            initial={{ width: 0 }}
-                            animate={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1, delay: index * 0.1, ease: "easeOut" }}
-                          />
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Additional Skills Summary */}
-          <motion.div 
-            className="mt-16 grid md:grid-cols-3 gap-6"
+            Skills & Technologies
+          </motion.h2>
+          <motion.p 
+            className="text-muted-foreground max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
-            animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <motion.div 
-              className="surface-card p-6 text-center"
-              whileHover={{ scale: 1.05, y: -5 }}
+            A comprehensive overview of my technical expertise and proficiencies
+            across various domains of computer science and engineering.
+          </motion.p>
+        </div>
+
+        {/* Advanced Skills Visualization */}
+        <div className="mb-16">
+          <AdvancedSkillMeter skills={skillsData} />
+        </div>
+
+        {/* Traditional Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {skillCategories.map((category, index) => (
+            <AnimatedCard 
+              key={category.name}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
             >
-              <div className="text-2xl font-bold text-accent mb-2">5+</div>
-              <div className="text-sm text-muted-foreground">Programming Languages</div>
-            </motion.div>
-            <motion.div 
-              className="surface-card p-6 text-center"
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
-              <div className="text-2xl font-bold text-accent mb-2">15+</div>
-              <div className="text-sm text-muted-foreground">Frameworks & Libraries</div>
-            </motion.div>
-            <motion.div 
-              className="surface-card p-6 text-center"
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
-              <div className="text-2xl font-bold text-accent mb-2">20+</div>
-              <div className="text-sm text-muted-foreground">Tools & Technologies</div>
-            </motion.div>
-          </motion.div>
+              <div className="p-6 h-full relative overflow-hidden">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 rounded-full bg-primary/10 mr-4">
+                    <category.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-heading text-foreground">{category.name}</h3>
+                </div>
+                <ul className="space-y-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.li 
+                      key={skill} 
+                      className="text-muted-foreground flex items-center"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ 
+                        delay: index * 0.1 + skillIndex * 0.05,
+                        duration: 0.5 
+                      }}
+                      viewport={{ once: true }}
+                    >
+                      <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                      {skill}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </AnimatedCard>
+          ))}
         </div>
       </div>
     </section>
