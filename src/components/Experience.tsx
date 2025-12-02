@@ -57,49 +57,40 @@ const Experience = () => {
         <div className="space-y-10">
           {experiences.map((exp, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="group flex gap-4">
-                {/* Logo */}
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-lg bg-secondary/50 flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={exp.logo} 
-                      alt={`${exp.company} logo`} 
-                      className="w-8 h-8 object-contain"
-                    />
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="flex-1">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground">
-                        {exp.role}
-                      </h3>
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <span>{exp.company}</span>
-                        {exp.link && (
-                          <a
-                            href={exp.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center hover:text-foreground transition-colors"
-                          >
-                            <ArrowUpRight size={14} />
-                          </a>
-                        )}
-                      </div>
+              <div className="group">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
+                  <div>
+                    <h3 className="text-lg font-medium text-foreground">
+                      {exp.role}
+                    </h3>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <img 
+                        src={exp.logo} 
+                        alt={`${exp.company} logo`} 
+                        className="w-4 h-4 object-contain"
+                      />
+                      <span>{exp.company}</span>
+                      {exp.link && (
+                        <a
+                          href={exp.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center hover:text-foreground transition-colors"
+                        >
+                          <ArrowUpRight size={14} />
+                        </a>
+                      )}
                     </div>
-                    <span className="text-sm text-muted-foreground md:text-right">
-                      {exp.period}
-                      <br />
-                      <span className="text-xs">{exp.location}</span>
-                    </span>
                   </div>
-                  <p className="text-foreground/70 leading-relaxed">
-                    {exp.description}
-                  </p>
+                  <span className="text-sm text-muted-foreground md:text-right">
+                    {exp.period}
+                    <br />
+                    <span className="text-xs">{exp.location}</span>
+                  </span>
                 </div>
+                <p className="text-foreground/70 leading-relaxed">
+                  {exp.description}
+                </p>
               </div>
             </FadeIn>
           ))}

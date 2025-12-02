@@ -40,39 +40,31 @@ const Involvement = () => {
         <div className="grid gap-8">
           {activities.map((activity, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="flex gap-4">
-                {/* Logo */}
-                {activity.logo && (
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 rounded-lg bg-secondary/50 flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={activity.logo} 
-                        alt={`${activity.org} logo`} 
-                        className="w-7 h-7 object-contain"
-                      />
-                    </div>
-                  </div>
-                )}
-                
-                <div className="flex-1">
-                  <h3 className="text-foreground font-medium">{activity.role}</h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                    <span>{activity.org}</span>
-                    {activity.link && (
-                      <a
-                        href={activity.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center hover:text-foreground transition-colors"
-                      >
-                        <ArrowUpRight size={12} />
-                      </a>
-                    )}
-                  </div>
-                  <p className="text-foreground/70 text-sm leading-relaxed">
-                    {activity.description}
-                  </p>
+              <div>
+                <h3 className="text-foreground font-medium">{activity.role}</h3>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  {activity.logo && (
+                    <img 
+                      src={activity.logo} 
+                      alt={`${activity.org} logo`} 
+                      className="w-4 h-4 object-contain"
+                    />
+                  )}
+                  <span>{activity.org}</span>
+                  {activity.link && (
+                    <a
+                      href={activity.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center hover:text-foreground transition-colors"
+                    >
+                      <ArrowUpRight size={12} />
+                    </a>
+                  )}
                 </div>
+                <p className="text-foreground/70 text-sm leading-relaxed">
+                  {activity.description}
+                </p>
               </div>
             </FadeIn>
           ))}
