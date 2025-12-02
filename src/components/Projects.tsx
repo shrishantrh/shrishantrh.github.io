@@ -1,167 +1,85 @@
-import { ExternalLink, Github, Award, Brain, Shield, Leaf } from "lucide-react";
+import { ArrowUpRight, Award } from "lucide-react";
 
 const Projects = () => {
   const projects = [
     {
-      title: "Neurovision",
-      subtitle: "AI-Powered Alzheimer's Detection",
-      description: "Advanced machine learning system for early Alzheimer's detection using neuroimaging data. Achieved 94% accuracy in clinical trials.",
-      longDescription: [
-        "Developed CNN-based deep learning model for MRI scan analysis",
-        "Implemented ensemble learning techniques for improved accuracy", 
-        "Created intuitive web interface for healthcare professionals",
-        "Validated with real clinical datasets from multiple hospitals"
-      ],
-      icon: Brain,
-      technologies: ["Python", "TensorFlow", "React", "Medical Imaging", "CNN", "Healthcare APIs"],
-      features: ["94% Accuracy", "Clinical Validation", "Real-time Analysis"],
-      github: "#",
-      demo: "#",
-      award: "Winner - Healthcare Innovation Challenge 2023"
+      name: "Jvala",
+      tagline: "AI-powered chronic condition tracker",
+      description: "Won UIUC Startup Weekend. One-tap symptom logging with passive environmental data integration and clinician-grade insights.",
+      link: "https://jvala.tech",
+      award: "$20K+ funding from 1517 Fund",
+      tech: ["React", "AI/ML", "TypeScript"]
     },
     {
-      title: "StoveStopper",
-      subtitle: "IoT Fire Prevention System",
-      description: "Smart kitchen safety system using IoT sensors and machine learning to prevent cooking-related fires before they start.",
-      longDescription: [
-        "Built IoT sensor network for real-time kitchen monitoring",
-        "Developed predictive ML models for fire risk assessment",
-        "Created mobile app for remote monitoring and alerts",
-        "Integrated with smart home systems and emergency services"
-      ],
-      icon: Shield,
-      technologies: ["Arduino", "Python", "IoT", "React Native", "Firebase", "Machine Learning"],
-      features: ["Real-time Monitoring", "Predictive Alerts", "Mobile Integration"],
-      github: "#",
-      demo: "#",
-      award: "2nd Place - Smart Cities Hackathon 2023"
+      name: "Neurovision",
+      tagline: "Medical AI diagnostic platform",
+      description: "CNN-based early-stage Alzheimer's detection from MRI scans achieving 92% accuracy. Built HIPAA-compliant data pipeline.",
+      link: null,
+      award: null,
+      tech: ["TensorFlow", "Python", "Medical Imaging"]
     },
     {
-      title: "Agricare",
-      subtitle: "Crop Disease Detection Platform",
-      description: "Computer vision platform helping farmers identify crop diseases early using smartphone cameras and AI diagnosis.",
-      longDescription: [
-        "Trained image classification models on 50,000+ crop images",
-        "Built cross-platform mobile app for field use",
-        "Integrated weather data for enhanced predictions",
-        "Partnered with agricultural extension services for deployment"
-      ],
-      icon: Leaf,
-      technologies: ["Python", "OpenCV", "Flutter", "TensorFlow Lite", "Google Cloud", "Agriculture APIs"],
-      features: ["95%+ Disease Accuracy", "Offline Capability", "Multi-language Support"],
-      github: "#",
-      demo: "#",
-      award: "Best Social Impact - AgTech Innovation Summit 2023"
+      name: "Agricare",
+      tagline: "Agricultural disease detection",
+      description: "Computer vision app for crop disease identification with treatment recommendations. Custom CNN architecture with OpenCV.",
+      link: null,
+      award: null,
+      tech: ["OpenCV", "CNN", "Mobile"]
     }
   ];
 
   return (
-    <section className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-display mb-6">Featured Projects</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              From healthcare AI to IoT solutions, here are some projects that showcase 
-              my passion for solving real-world problems with technology.
-            </p>
-          </div>
+    <section className="section-spacing border-t border-border">
+      <div className="container-narrow">
+        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
+          Projects
+        </h2>
 
-          {/* Projects Grid */}
-          <div className="space-y-8">
-            {projects.map((project, index) => (
-              <div key={index} className="surface-card surface-glow p-8 hover-lift group">
-                <div className="grid md:grid-cols-3 gap-8">
-                  {/* Project Icon & Header */}
-                  <div className="space-y-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="p-4 bg-gradient-to-br from-accent/20 to-primary/20 rounded-xl">
-                        <project.icon className="text-accent" size={32} />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">{project.subtitle}</p>
-                      </div>
-                    </div>
-
-                    {/* Award Badge */}
-                    {project.award && (
-                      <div className="flex items-center space-x-2 text-sm">
-                        <Award className="text-accent" size={16} />
-                        <span className="text-accent font-medium">{project.award}</span>
-                      </div>
+        <div className="space-y-10">
+          {projects.map((project, index) => (
+            <div key={index} className="group">
+              <div className="flex items-start justify-between gap-4 mb-2">
+                <div>
+                  <h3 className="text-lg font-medium text-foreground inline-flex items-center gap-2">
+                    {project.name}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <ArrowUpRight size={16} />
+                      </a>
                     )}
-
-                    {/* Key Features */}
-                    <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-foreground">Key Features</h4>
-                      {project.features.map((feature, i) => (
-                        <div key={i} className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-accent rounded-full"></div>
-                          <span className="text-sm text-muted-foreground">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Links */}
-                    <div className="flex space-x-3">
-                      <a 
-                        href={project.github}
-                        className="flex items-center space-x-2 px-4 py-2 bg-secondary/80 hover:bg-secondary text-secondary-foreground rounded-lg transition-colors text-sm"
-                      >
-                        <Github size={16} />
-                        <span>Code</span>
-                      </a>
-                      <a 
-                        href={project.demo}
-                        className="flex items-center space-x-2 px-4 py-2 bg-accent/20 hover:bg-accent/30 text-accent rounded-lg transition-colors text-sm"
-                      >
-                        <ExternalLink size={16} />
-                        <span>Demo</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Project Details */}
-                  <div className="md:col-span-2 space-y-6">
-                    {/* Description */}
-                    <div className="space-y-4">
-                      <p className="text-muted-foreground leading-relaxed">
-                        {project.description}
-                      </p>
-                      
-                      <div className="space-y-2">
-                        {project.longDescription.map((detail, i) => (
-                          <div key={i} className="flex items-start space-x-3">
-                            <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-sm text-muted-foreground">{detail}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Technologies */}
-                    <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-foreground">Technologies Used</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, i) => (
-                          <span 
-                            key={i}
-                            className="px-3 py-1 bg-primary/20 text-primary-foreground text-xs rounded-full font-medium border border-primary/30"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{project.tagline}</p>
                 </div>
               </div>
-            ))}
-          </div>
+              
+              {project.award && (
+                <div className="inline-flex items-center gap-1.5 text-sm text-primary mb-3">
+                  <Award size={14} />
+                  {project.award}
+                </div>
+              )}
+              
+              <p className="text-foreground/70 leading-relaxed mb-3">
+                {project.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
