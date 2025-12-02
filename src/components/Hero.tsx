@@ -1,5 +1,6 @@
 import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import headshot from "@/assets/headshot.jpeg";
+import uiucLogo from "@/assets/logos/uiuc.png";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -8,15 +9,23 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative px-6">
-      <div className="max-w-3xl mx-auto text-center">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-background to-background pointer-events-none" />
+      
+      <div className="max-w-3xl mx-auto text-center relative">
         <div className="space-y-8">
           {/* Profile Picture */}
           <div className="animate-in flex justify-center">
-            <img 
-              src={headshot} 
-              alt="Shrishant Hattarki" 
-              className="w-28 h-28 rounded-full object-cover ring-4 ring-secondary shadow-lg"
-            />
+            <div className="relative">
+              <img 
+                src={headshot} 
+                alt="Shrishant Hattarki" 
+                className="w-28 h-28 rounded-full object-cover ring-4 ring-secondary shadow-lg"
+              />
+              <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-background rounded-full flex items-center justify-center shadow-md border border-border">
+                <img src={uiucLogo} alt="UIUC" className="w-5 h-5 object-contain" />
+              </div>
+            </div>
           </div>
 
           {/* Status */}
@@ -42,7 +51,7 @@ const Hero = () => {
               href="https://github.com/shrishantrh"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
+              className="p-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-all hover:scale-105"
               aria-label="GitHub"
             >
               <Github size={20} />
@@ -51,14 +60,14 @@ const Hero = () => {
               href="https://linkedin.com/in/shrishanth"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
+              className="p-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-all hover:scale-105"
               aria-label="LinkedIn"
             >
               <Linkedin size={20} />
             </a>
             <a
               href="mailto:shatt@illinois.edu"
-              className="p-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
+              className="p-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-all hover:scale-105"
               aria-label="Email"
             >
               <Mail size={20} />
@@ -67,7 +76,7 @@ const Hero = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:opacity-90 transition-all hover:scale-105"
             >
               <FileText size={16} />
               Resume
@@ -78,7 +87,7 @@ const Hero = () => {
         {/* Scroll indicator */}
         <button
           onClick={scrollToAbout}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 p-2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
+          className="absolute -bottom-24 left-1/2 -translate-x-1/2 p-2 text-muted-foreground hover:text-foreground transition-colors animate-bounce"
           aria-label="Scroll to content"
         >
           <ArrowDown size={24} />
