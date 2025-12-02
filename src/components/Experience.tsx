@@ -1,5 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import FadeIn from "./FadeIn";
+import jvalaLogo from "@/assets/logos/jvala.png";
+import jeevLogo from "@/assets/logos/jeev.png";
+import uicLogo from "@/assets/logos/uic-robotics.png";
+import argonneLogo from "@/assets/logos/argonne.png";
 
 const Experience = () => {
   const experiences = [
@@ -7,9 +11,10 @@ const Experience = () => {
       role: "Founder & CEO",
       company: "Jvala",
       location: "Champaign, IL",
-      period: "Sep 2024 – Present",
+      period: "Sep 2025 – Present",
       description: "AI-powered chronic condition tracker. Won UIUC Startup Weekend. Raised $20K+ from 1517 Fund.",
-      link: "https://jvala.tech"
+      link: "https://jvala.tech",
+      logo: jvalaLogo
     },
     {
       role: "Software Development Intern",
@@ -17,7 +22,8 @@ const Experience = () => {
       location: "Bengaluru, India",
       period: "Jun 2022 – Present",
       description: "Built production OCR system for FDA medical data migration, processing 10K+ documents monthly. Optimized pharmacovigilance signal detection algorithms for FDA's 15M+ record FAERS dataset.",
-      link: "https://jeevlifeworks.com"
+      link: "https://jeevlifeworks.com",
+      logo: jeevLogo
     },
     {
       role: "Research Assistant",
@@ -25,7 +31,8 @@ const Experience = () => {
       location: "Chicago, IL",
       period: "Sep 2024 – May 2025",
       description: "Developed autonomous pathfinding algorithms for Unitree Go1 quadruped robots using real-time stereo vision. Benchmarked against motion capture systems.",
-      link: "https://pab47.github.io/"
+      link: "https://pab47.github.io/",
+      logo: uicLogo
     },
     {
       role: "Machine Learning Researcher",
@@ -33,7 +40,8 @@ const Experience = () => {
       location: "Lemont, IL",
       period: "Sep 2023 – Jun 2024",
       description: "Developed LSTM-based classification models to predict thermoacoustic instability in aerospace propulsion systems. Published research on IMSA Digital Commons.",
-      link: "https://www.anl.gov/taps/advanced-propulsion-and-power"
+      link: "https://www.anl.gov/taps/advanced-propulsion-and-power",
+      logo: argonneLogo
     }
   ];
 
@@ -46,38 +54,52 @@ const Experience = () => {
           </h2>
         </FadeIn>
 
-        <div className="space-y-12">
+        <div className="space-y-10">
           {experiences.map((exp, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="group">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
-                  <div>
-                    <h3 className="text-lg font-medium text-foreground">
-                      {exp.role}
-                    </h3>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <span>{exp.company}</span>
-                      {exp.link && (
-                        <a
-                          href={exp.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center hover:text-foreground transition-colors"
-                        >
-                          <ArrowUpRight size={14} />
-                        </a>
-                      )}
-                    </div>
+              <div className="group flex gap-4">
+                {/* Logo */}
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-secondary/50 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={exp.logo} 
+                      alt={`${exp.company} logo`} 
+                      className="w-8 h-8 object-contain"
+                    />
                   </div>
-                  <span className="text-sm text-muted-foreground md:text-right">
-                    {exp.period}
-                    <br />
-                    <span className="text-xs">{exp.location}</span>
-                  </span>
                 </div>
-                <p className="text-foreground/70 leading-relaxed">
-                  {exp.description}
-                </p>
+                
+                {/* Content */}
+                <div className="flex-1">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
+                    <div>
+                      <h3 className="text-lg font-medium text-foreground">
+                        {exp.role}
+                      </h3>
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <span>{exp.company}</span>
+                        {exp.link && (
+                          <a
+                            href={exp.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center hover:text-foreground transition-colors"
+                          >
+                            <ArrowUpRight size={14} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    <span className="text-sm text-muted-foreground md:text-right">
+                      {exp.period}
+                      <br />
+                      <span className="text-xs">{exp.location}</span>
+                    </span>
+                  </div>
+                  <p className="text-foreground/70 leading-relaxed">
+                    {exp.description}
+                  </p>
+                </div>
               </div>
             </FadeIn>
           ))}
