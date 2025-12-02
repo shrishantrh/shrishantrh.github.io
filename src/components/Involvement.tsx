@@ -1,3 +1,5 @@
+import FadeIn from "./FadeIn";
+
 const Involvement = () => {
   const activities = [
     {
@@ -20,19 +22,23 @@ const Involvement = () => {
   return (
     <section className="section-spacing border-t border-border">
       <div className="container-narrow">
-        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
-          Involvement
-        </h2>
+        <FadeIn>
+          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
+            Involvement
+          </h2>
+        </FadeIn>
 
         <div className="grid gap-8">
           {activities.map((activity, index) => (
-            <div key={index}>
-              <h3 className="text-foreground font-medium">{activity.role}</h3>
-              <p className="text-sm text-muted-foreground mb-2">{activity.org}</p>
-              <p className="text-foreground/70 text-sm leading-relaxed">
-                {activity.description}
-              </p>
-            </div>
+            <FadeIn key={index} delay={index * 100}>
+              <div>
+                <h3 className="text-foreground font-medium">{activity.role}</h3>
+                <p className="text-sm text-muted-foreground mb-2">{activity.org}</p>
+                <p className="text-foreground/70 text-sm leading-relaxed">
+                  {activity.description}
+                </p>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </div>
