@@ -1,5 +1,4 @@
 import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
-import { Link } from "react-router-dom";
 import headshot from "@/assets/headshot.jpeg";
 
 const Hero = () => {
@@ -64,13 +63,15 @@ const Hero = () => {
             >
               <Mail size={20} />
             </a>
-            <Link
-              to="/resume"
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity"
             >
               <FileText size={16} />
               Resume
-            </Link>
+            </a>
           </div>
         </div>
 
