@@ -1,22 +1,23 @@
 import { ArrowUpRight } from "lucide-react";
+import FadeIn from "./FadeIn";
 
 const Experience = () => {
   const experiences = [
+    {
+      role: "Founder & CEO",
+      company: "Jvala",
+      location: "Champaign, IL",
+      period: "Sep 2024 – Present",
+      description: "AI-powered chronic condition tracker. Won UIUC Startup Weekend. Raised $20K+ from 1517 Fund.",
+      link: "https://jvala.tech"
+    },
     {
       role: "Software Development Intern",
       company: "Jeev Lifeworks",
       location: "Bengaluru, India",
       period: "Jun 2022 – Present",
       description: "Built production OCR system for FDA medical data migration, processing 10K+ documents monthly. Optimized pharmacovigilance signal detection algorithms for FDA's 15M+ record FAERS dataset.",
-      link: null
-    },
-    {
-      role: "Machine Learning Researcher",
-      company: "Argonne National Laboratory",
-      location: "Lemont, IL",
-      period: "Sep 2023 – Jun 2024",
-      description: "Developed LSTM-based classification models to predict thermoacoustic instability in aerospace propulsion systems. Published research on IMSA Digital Commons.",
-      link: "https://digitalcommons.imsa.edu/"
+      link: "https://jeevlifeworks.com"
     },
     {
       role: "Research Assistant",
@@ -24,49 +25,61 @@ const Experience = () => {
       location: "Chicago, IL",
       period: "Sep 2024 – May 2025",
       description: "Developed autonomous pathfinding algorithms for Unitree Go1 quadruped robots using real-time stereo vision. Benchmarked against motion capture systems.",
-      link: null
+      link: "https://pab47.github.io/"
+    },
+    {
+      role: "Machine Learning Researcher",
+      company: "Argonne National Laboratory",
+      location: "Lemont, IL",
+      period: "Sep 2023 – Jun 2024",
+      description: "Developed LSTM-based classification models to predict thermoacoustic instability in aerospace propulsion systems. Published research on IMSA Digital Commons.",
+      link: "https://www.anl.gov/taps/advanced-propulsion-and-power"
     }
   ];
 
   return (
     <section className="section-spacing border-t border-border">
       <div className="container-narrow">
-        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
-          Experience
-        </h2>
+        <FadeIn>
+          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
+            Experience
+          </h2>
+        </FadeIn>
 
         <div className="space-y-12">
           {experiences.map((exp, index) => (
-            <div key={index} className="group">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
-                <div>
-                  <h3 className="text-lg font-medium text-foreground">
-                    {exp.role}
-                  </h3>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <span>{exp.company}</span>
-                    {exp.link && (
-                      <a
-                        href={exp.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center hover:text-foreground transition-colors"
-                      >
-                        <ArrowUpRight size={14} />
-                      </a>
-                    )}
+            <FadeIn key={index} delay={index * 100}>
+              <div className="group">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
+                  <div>
+                    <h3 className="text-lg font-medium text-foreground">
+                      {exp.role}
+                    </h3>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <span>{exp.company}</span>
+                      {exp.link && (
+                        <a
+                          href={exp.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center hover:text-foreground transition-colors"
+                        >
+                          <ArrowUpRight size={14} />
+                        </a>
+                      )}
+                    </div>
                   </div>
+                  <span className="text-sm text-muted-foreground md:text-right">
+                    {exp.period}
+                    <br />
+                    <span className="text-xs">{exp.location}</span>
+                  </span>
                 </div>
-                <span className="text-sm text-muted-foreground md:text-right">
-                  {exp.period}
-                  <br />
-                  <span className="text-xs">{exp.location}</span>
-                </span>
+                <p className="text-foreground/70 leading-relaxed">
+                  {exp.description}
+                </p>
               </div>
-              <p className="text-foreground/70 leading-relaxed">
-                {exp.description}
-              </p>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </div>

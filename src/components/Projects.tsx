@@ -1,15 +1,8 @@
 import { ArrowUpRight, Award } from "lucide-react";
+import FadeIn from "./FadeIn";
 
 const Projects = () => {
   const projects = [
-    {
-      name: "Jvala",
-      tagline: "AI-powered chronic condition tracker",
-      description: "Won UIUC Startup Weekend. One-tap symptom logging with passive environmental data integration and clinician-grade insights.",
-      link: "https://jvala.tech",
-      award: "$20K+ funding from 1517 Fund",
-      tech: ["React", "AI/ML", "TypeScript"]
-    },
     {
       name: "Neurovision",
       tagline: "Medical AI diagnostic platform",
@@ -31,54 +24,58 @@ const Projects = () => {
   return (
     <section className="section-spacing border-t border-border">
       <div className="container-narrow">
-        <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
-          Projects
-        </h2>
+        <FadeIn>
+          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
+            Projects
+          </h2>
+        </FadeIn>
 
         <div className="space-y-10">
           {projects.map((project, index) => (
-            <div key={index} className="group">
-              <div className="flex items-start justify-between gap-4 mb-2">
-                <div>
-                  <h3 className="text-lg font-medium text-foreground inline-flex items-center gap-2">
-                    {project.name}
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <ArrowUpRight size={16} />
-                      </a>
-                    )}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{project.tagline}</p>
+            <FadeIn key={index} delay={index * 100}>
+              <div className="group">
+                <div className="flex items-start justify-between gap-4 mb-2">
+                  <div>
+                    <h3 className="text-lg font-medium text-foreground inline-flex items-center gap-2">
+                      {project.name}
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          <ArrowUpRight size={16} />
+                        </a>
+                      )}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{project.tagline}</p>
+                  </div>
+                </div>
+                
+                {project.award && (
+                  <div className="inline-flex items-center gap-1.5 text-sm text-primary mb-3">
+                    <Award size={14} />
+                    {project.award}
+                  </div>
+                )}
+                
+                <p className="text-foreground/70 leading-relaxed mb-3">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
-              
-              {project.award && (
-                <div className="inline-flex items-center gap-1.5 text-sm text-primary mb-3">
-                  <Award size={14} />
-                  {project.award}
-                </div>
-              )}
-              
-              <p className="text-foreground/70 leading-relaxed mb-3">
-                {project.description}
-              </p>
-              
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </div>
