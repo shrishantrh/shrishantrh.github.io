@@ -46,49 +46,45 @@ const Experience = () => {
   ];
 
   return (
-    <section className="section-spacing border-t border-border">
+    <section className="section-spacing subtle-border">
       <div className="container-narrow">
         <FadeIn>
-          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
-            Experience
-          </h2>
+          <h2 className="section-title">Experience</h2>
         </FadeIn>
 
-        <div className="space-y-10">
+        <div className="space-y-2">
           {experiences.map((exp, index) => (
-            <FadeIn key={index} delay={index * 100}>
-              <div className="group">
+            <FadeIn key={index} delay={index * 80}>
+              <div className="card-hover group">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
                   <div>
-                    <h3 className="text-lg font-medium text-foreground">
+                    <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
                       {exp.role}
                     </h3>
-                    <div className="flex items-center gap-2 text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <img 
                         src={exp.logo} 
                         alt={`${exp.company} logo`} 
-                        className="w-4 h-4 object-contain"
+                        className="w-4 h-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                       />
-                      <span>{exp.company}</span>
-                      {exp.link && (
-                        <a
-                          href={exp.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center hover:text-foreground transition-colors"
-                        >
-                          <ArrowUpRight size={14} />
-                        </a>
-                      )}
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-foreground transition-colors inline-flex items-center gap-1"
+                      >
+                        {exp.company}
+                        <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </a>
                     </div>
                   </div>
-                  <span className="text-sm text-muted-foreground md:text-right">
+                  <span className="text-xs text-muted-foreground md:text-right whitespace-nowrap">
                     {exp.period}
-                    <br />
-                    <span className="text-xs">{exp.location}</span>
+                    <span className="hidden md:inline"> · </span>
+                    <span className="block md:inline">{exp.location}</span>
                   </span>
                 </div>
-                <p className="text-foreground/70 leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {exp.description}
                 </p>
               </div>
