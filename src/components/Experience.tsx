@@ -52,30 +52,30 @@ const Experience = () => {
           <h2 className="section-title">Experience</h2>
         </FadeIn>
 
-        <div className="space-y-2">
+        <div className="space-y-1">
           {experiences.map((exp, index) => (
-            <FadeIn key={index} delay={index * 80}>
-              <div className="card-hover group">
+            <FadeIn key={index} delay={index * 100}>
+              <a
+                href={exp.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-hover glow-hover group block"
+              >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
-                  <div>
-                    <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
+                  <div className="flex-1">
+                    <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors duration-300">
                       {exp.role}
                     </h3>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <img 
                         src={exp.logo} 
                         alt={`${exp.company} logo`} 
-                        className="w-4 h-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                        className="w-4 h-4 object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
                       />
-                      <a
-                        href={exp.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-foreground transition-colors inline-flex items-center gap-1"
-                      >
+                      <span className="group-hover:text-foreground transition-colors duration-300 inline-flex items-center gap-1">
                         {exp.company}
-                        <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </a>
+                        <ArrowUpRight size={12} className="opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
+                      </span>
                     </div>
                   </div>
                   <span className="text-xs text-muted-foreground md:text-right whitespace-nowrap">
@@ -84,10 +84,10 @@ const Experience = () => {
                     <span className="block md:inline">{exp.location}</span>
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">
                   {exp.description}
                 </p>
-              </div>
+              </a>
             </FadeIn>
           ))}
         </div>

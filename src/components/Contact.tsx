@@ -6,9 +6,7 @@ const Contact = () => {
     <section className="section-spacing border-t border-border">
       <div className="container-narrow">
         <FadeIn>
-          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-8">
-            Contact
-          </h2>
+          <h2 className="section-title">Contact</h2>
         </FadeIn>
         
         <FadeIn delay={100}>
@@ -21,7 +19,7 @@ const Contact = () => {
           <div className="flex flex-wrap gap-4">
             <a
               href="mailto:shatt@illinois.edu"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
             >
               <Mail size={16} />
               shatt@illinois.edu
@@ -30,10 +28,10 @@ const Contact = () => {
               href="https://linkedin.com/in/shrishanth"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-foreground font-medium text-sm hover:bg-secondary transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border text-foreground font-medium text-sm hover:bg-secondary hover:border-border/80 transition-all duration-300 hover:-translate-y-0.5 group"
             >
               LinkedIn
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </div>
         </FadeIn>
