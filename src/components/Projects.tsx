@@ -42,18 +42,18 @@ const Projects = () => {
           </h2>
         </FadeIn>
 
-        <div className="space-y-8">
+        <div className="space-y-10">
           {projects.map((project, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="group relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-border before:transition-colors before:duration-300 group-hover:before:bg-primary">
+              <div className="group">
                 <div className="flex items-start justify-between gap-4 mb-2">
                   <div>
-                    <h3 className="text-lg font-medium text-foreground inline-flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-lg font-medium text-foreground inline-flex items-center gap-2">
                       {project.logo && (
                         <img 
                           src={project.logo} 
                           alt={`${project.name} logo`} 
-                          className="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                          className="w-5 h-5 object-contain"
                         />
                       )}
                       {project.name}
@@ -62,7 +62,7 @@ const Projects = () => {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="text-muted-foreground hover:text-foreground transition-colors"
                         >
                           <ArrowUpRight size={16} />
                         </a>
@@ -73,13 +73,13 @@ const Projects = () => {
                 </div>
                 
                 {project.award && (
-                  <div className="inline-flex items-center gap-1.5 text-sm text-primary bg-primary/10 px-3 py-1 rounded-full mb-3 border border-primary/20">
+                  <div className="inline-flex items-center gap-1.5 text-sm text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
                     <Award size={14} />
                     {project.award}
                   </div>
                 )}
                 
-                <p className="text-foreground/70 leading-relaxed mb-3 text-sm">
+                <p className="text-foreground/70 leading-relaxed mb-3">
                   {project.description}
                 </p>
                 
@@ -87,7 +87,7 @@ const Projects = () => {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-2.5 py-1 rounded-full bg-secondary/80 text-muted-foreground border border-border/50 transition-colors hover:text-foreground hover:border-border"
+                      className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground"
                     >
                       {tech}
                     </span>

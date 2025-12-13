@@ -54,28 +54,28 @@ const Experience = () => {
           </h2>
         </FadeIn>
 
-        <div className="space-y-8">
+        <div className="space-y-10">
           {experiences.map((exp, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="group relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-border before:transition-colors before:duration-300 group-hover:before:bg-primary">
+              <div className="group">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
                   <div>
-                    <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-lg font-medium text-foreground">
                       {exp.role}
                     </h3>
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <img 
                         src={exp.logo} 
                         alt={`${exp.company} logo`} 
-                        className="w-4 h-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                        className="w-4 h-4 object-contain"
                       />
-                      <span className="text-sm">{exp.company}</span>
+                      <span>{exp.company}</span>
                       {exp.link && (
                         <a
                           href={exp.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center hover:text-primary transition-colors"
+                          className="inline-flex items-center hover:text-foreground transition-colors"
                         >
                           <ArrowUpRight size={14} />
                         </a>
@@ -85,10 +85,10 @@ const Experience = () => {
                   <span className="text-sm text-muted-foreground md:text-right">
                     {exp.period}
                     <br />
-                    <span className="text-xs opacity-70">{exp.location}</span>
+                    <span className="text-xs">{exp.location}</span>
                   </span>
                 </div>
-                <p className="text-foreground/70 leading-relaxed text-sm">
+                <p className="text-foreground/70 leading-relaxed">
                   {exp.description}
                 </p>
               </div>

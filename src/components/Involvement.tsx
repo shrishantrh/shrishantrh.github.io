@@ -37,17 +37,17 @@ const Involvement = () => {
           </h2>
         </FadeIn>
 
-        <div className="grid gap-6">
+        <div className="grid gap-8">
           {activities.map((activity, index) => (
             <FadeIn key={index} delay={index * 100}>
-              <div className="group relative pl-6 before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:rounded-full before:bg-border before:transition-colors before:duration-300 group-hover:before:bg-primary">
-                <h3 className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">{activity.role}</h3>
+              <div>
+                <h3 className="text-foreground font-medium">{activity.role}</h3>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                   {activity.logo && (
                     <img 
                       src={activity.logo} 
                       alt={`${activity.org} logo`} 
-                      className="w-4 h-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                      className="w-4 h-4 object-contain"
                     />
                   )}
                   <span>{activity.org}</span>
@@ -56,7 +56,7 @@ const Involvement = () => {
                       href={activity.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center hover:text-primary transition-colors"
+                      className="inline-flex items-center hover:text-foreground transition-colors"
                     >
                       <ArrowUpRight size={12} />
                     </a>

@@ -30,14 +30,14 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border/50 shadow-sm' : ''
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-background/90 backdrop-blur-md border-b border-border' : ''
     }`}>
       <div className="max-w-3xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-display font-semibold text-foreground hover:text-primary transition-colors duration-200 text-lg"
+            className="font-display font-semibold text-foreground hover:text-primary transition-colors"
           >
             SH
           </button>
@@ -48,7 +48,7 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 relative after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-px after:bg-foreground after:transition-all after:duration-300 hover:after:w-full"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
               </button>
@@ -61,7 +61,7 @@ const Navigation = () => {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-foreground hover:text-primary transition-colors"
+              className="p-2 text-foreground"
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -71,12 +71,12 @@ const Navigation = () => {
 
         {/* Mobile nav */}
         {isOpen && (
-          <div className="md:hidden pt-4 pb-2 animate-in">
+          <div className="md:hidden pt-4 pb-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left py-3 text-muted-foreground hover:text-foreground hover:pl-2 transition-all duration-200"
+                className="block w-full text-left py-2 text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
               </button>
