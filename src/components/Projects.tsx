@@ -34,60 +34,51 @@ const Projects = () => {
   ];
 
   return (
-    <section className="section-spacing border-t border-border">
+    <section className="section-spacing subtle-border">
       <div className="container-narrow">
         <FadeIn>
-          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
-            Projects
-          </h2>
+          <h2 className="section-title">Projects</h2>
         </FadeIn>
 
-        <div className="space-y-10">
+        <div className="space-y-2">
           {projects.map((project, index) => (
-            <FadeIn key={index} delay={index * 100}>
-              <div className="group">
+            <FadeIn key={index} delay={index * 80}>
+              <div className="card-hover group">
                 <div className="flex items-start justify-between gap-4 mb-2">
                   <div>
-                    <h3 className="text-lg font-medium text-foreground inline-flex items-center gap-2">
+                    <h3 className="text-base font-medium text-foreground inline-flex items-center gap-2 group-hover:text-primary transition-colors">
                       {project.logo && (
                         <img 
                           src={project.logo} 
                           alt={`${project.name} logo`} 
-                          className="w-5 h-5 object-contain"
+                          className="w-4 h-4 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                         />
                       )}
                       {project.name}
                       {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          <ArrowUpRight size={16} />
-                        </a>
+                        <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground" />
                       )}
                     </h3>
-                    <p className="text-sm text-muted-foreground">{project.tagline}</p>
+                    <p className="text-xs text-muted-foreground">{project.tagline}</p>
                   </div>
                 </div>
                 
                 {project.award && (
-                  <div className="inline-flex items-center gap-1.5 text-sm text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
-                    <Award size={14} />
+                  <div className="inline-flex items-center gap-1.5 text-xs text-primary bg-primary/10 px-2.5 py-1 rounded-full mb-2 border border-primary/20">
+                    <Award size={12} />
                     {project.award}
                   </div>
                 )}
                 
-                <p className="text-foreground/70 leading-relaxed mb-3">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-2 py-1 rounded bg-secondary text-secondary-foreground"
+                      className="text-xs px-2 py-0.5 rounded-full bg-secondary/80 text-muted-foreground border border-border/50"
                     >
                       {tech}
                     </span>

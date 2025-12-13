@@ -29,40 +29,42 @@ const Involvement = () => {
   ];
 
   return (
-    <section className="section-spacing border-t border-border">
+    <section className="section-spacing subtle-border">
       <div className="container-narrow">
         <FadeIn>
-          <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-12">
-            Involvement
-          </h2>
+          <h2 className="section-title">Involvement</h2>
         </FadeIn>
 
-        <div className="grid gap-8">
+        <div className="space-y-2">
           {activities.map((activity, index) => (
-            <FadeIn key={index} delay={index * 100}>
-              <div>
-                <h3 className="text-foreground font-medium">{activity.role}</h3>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+            <FadeIn key={index} delay={index * 80}>
+              <div className="card-hover group">
+                <h3 className="text-base text-foreground font-medium group-hover:text-primary transition-colors">
+                  {activity.role}
+                </h3>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                   {activity.logo && (
                     <img 
                       src={activity.logo} 
                       alt={`${activity.org} logo`} 
-                      className="w-4 h-4 object-contain"
+                      className="w-3.5 h-3.5 object-contain opacity-70 group-hover:opacity-100 transition-opacity"
                     />
                   )}
-                  <span>{activity.org}</span>
-                  {activity.link && (
+                  {activity.link ? (
                     <a
                       href={activity.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center hover:text-foreground transition-colors"
+                      className="hover:text-foreground transition-colors inline-flex items-center gap-1"
                     >
-                      <ArrowUpRight size={12} />
+                      {activity.org}
+                      <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
+                  ) : (
+                    <span>{activity.org}</span>
                   )}
                 </div>
-                <p className="text-foreground/70 text-sm leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {activity.description}
                 </p>
               </div>

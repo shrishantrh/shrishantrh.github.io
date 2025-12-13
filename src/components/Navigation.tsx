@@ -30,25 +30,25 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/90 backdrop-blur-md border-b border-border' : ''
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled ? 'bg-background/80 backdrop-blur-xl border-b border-border/50' : ''
     }`}>
-      <div className="max-w-3xl mx-auto px-6 py-4">
+      <div className="max-w-3xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-display font-semibold text-foreground hover:text-primary transition-colors"
+            className="font-display font-semibold text-foreground hover:text-primary transition-colors text-sm"
           >
             SH
           </button>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
               >
                 {item.label}
               </button>
