@@ -5,11 +5,26 @@ import ThemeToggle from "./ThemeToggle";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Track active section
+      const sections = ['about', 'experience', 'projects', 'contact'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -37,23 +52,29 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-display font-semibold text-foreground hover:text-primary transition-colors text-sm"
+            className="font-display font-semibold text-foreground hover:text-primary transition-colors duration-300 text-sm"
           >
             SH
           </button>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wide"
+                className={`text-xs px-3 py-1.5 rounded-full transition-all duration-300 uppercase tracking-wide ${
+                  activeSection === item.id 
+                    ? 'text-foreground bg-secondary' 
+                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                }`}
               >
                 {item.label}
               </button>
             ))}
-            <ThemeToggle />
+            <div className="ml-2">
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -61,7 +82,7 @@ const Navigation = () => {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-foreground"
+              className="p-2 text-foreground rounded-lg hover:bg-secondary transition-colors duration-300"
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -70,19 +91,23 @@ const Navigation = () => {
         </div>
 
         {/* Mobile nav */}
-        {isOpen && (
-          <div className="md:hidden pt-4 pb-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left py-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        )}
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ${
+          isOpen ? 'max-h-48 opacity-100 pt-4 pb-2' : 'max-h-0 opacity-0'
+        }`}>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`block w-full text-left py-2 px-3 rounded-lg transition-all duration-300 ${
+                activeSection === item.id 
+                  ? 'text-foreground bg-secondary' 
+                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
       </div>
     </nav>
   );
