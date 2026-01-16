@@ -15,7 +15,7 @@ const Hero = () => {
       {/* Silk background effect */}
       <div className="absolute inset-0 opacity-[0.15] pointer-events-none">
         <Silk
-          speed={3}
+          speed={7}
           scale={1.2}
           color="#6B7280"
           noiseIntensity={1}
