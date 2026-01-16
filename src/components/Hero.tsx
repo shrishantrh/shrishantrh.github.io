@@ -1,6 +1,7 @@
 import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
 import headshot from "@/assets/headshot.jpeg";
 import uiucLogo from "@/assets/logos/uiuc.png";
+import Silk from "./Silk";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -11,6 +12,37 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative px-6 overflow-hidden">
+      {/* Silk background effect */}
+      <div className="absolute inset-0 opacity-[0.15] pointer-events-none">
+        <Silk
+          speed={3}
+          scale={1.2}
+          color="#6B7280"
+          noiseIntensity={1}
+          rotation={0}
+        />
+      </div>
+      
+      {/* Fade overlay at bottom */}
+      <div 
+        className="absolute inset-x-0 bottom-0 h-64 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 0%, hsl(var(--background)) 100%)',
+          backdropFilter: 'blur(0px)',
+          mask: 'linear-gradient(to bottom, transparent 0%, black 100%)',
+          WebkitMask: 'linear-gradient(to bottom, transparent 0%, black 100%)'
+        }}
+      />
+      
+      {/* Additional blur fade for smoother transition */}
+      <div 
+        className="absolute inset-x-0 bottom-0 h-40 pointer-events-none z-10 backdrop-blur-sm"
+        style={{
+          mask: 'linear-gradient(to bottom, transparent 0%, black 100%)',
+          WebkitMask: 'linear-gradient(to bottom, transparent 0%, black 100%)'
+        }}
+      />
+      
       {/* Ambient gradient orbs */}
       <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none animate-float" />
       <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-accent/5 rounded-full blur-3xl pointer-events-none animate-float-delayed" />
