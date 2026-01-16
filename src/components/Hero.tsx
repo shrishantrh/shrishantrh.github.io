@@ -1,7 +1,6 @@
 import { ArrowDown, Github, Linkedin, Mail, FileText } from "lucide-react";
-import headshot from "@/assets/headshot.jpeg";
-import uiucLogo from "@/assets/logos/uiuc.png";
 import Silk from "./Silk";
+import Lanyard from "./Lanyard";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -23,9 +22,12 @@ const Hero = () => {
         />
       </div>
       
+      {/* Lanyard dangling from top */}
+      <Lanyard position={[0, 0, 30]} gravity={[0, -40, 0]} fov={20} />
+      
       {/* Fade overlay at bottom */}
       <div 
-        className="absolute inset-x-0 bottom-0 h-64 pointer-events-none z-10"
+        className="absolute inset-x-0 bottom-0 h-64 pointer-events-none z-30"
         style={{
           background: 'linear-gradient(to bottom, transparent 0%, hsl(var(--background)) 100%)',
           backdropFilter: 'blur(0px)',
@@ -36,7 +38,7 @@ const Hero = () => {
       
       {/* Additional blur fade for smoother transition */}
       <div 
-        className="absolute inset-x-0 bottom-0 h-40 pointer-events-none z-10 backdrop-blur-sm"
+        className="absolute inset-x-0 bottom-0 h-40 pointer-events-none z-30 backdrop-blur-sm"
         style={{
           mask: 'linear-gradient(to bottom, transparent 0%, black 100%)',
           WebkitMask: 'linear-gradient(to bottom, transparent 0%, black 100%)'
@@ -57,25 +59,10 @@ const Hero = () => {
         }}
       />
       
-      <div className="max-w-3xl mx-auto text-center relative">
+      <div className="max-w-3xl mx-auto text-center relative z-10 pointer-events-none">
         <div className="space-y-6">
-          {/* Profile Picture */}
-          <div className="blur-in flex justify-center">
-            <div className="relative group cursor-pointer">
-              <div className="absolute -inset-3 bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
-              <img 
-                src={headshot} 
-                alt="Shrishant Hattarki" 
-                className="relative w-24 h-24 rounded-full object-cover ring-2 ring-border shadow-2xl transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-background rounded-full flex items-center justify-center shadow-lg border border-border transition-transform duration-300 group-hover:scale-110">
-                <img src={uiucLogo} alt="UIUC" className="w-4 h-4 object-contain" />
-              </div>
-            </div>
-          </div>
-
           {/* Status */}
-          <div className="animate-in-delay-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/80 text-xs text-muted-foreground border border-border/50 backdrop-blur-sm">
+          <div className="animate-in-delay-1 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/80 text-xs text-muted-foreground border border-border/50 backdrop-blur-sm pointer-events-auto">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
             CS + Bioengineering @ UIUC
           </div>
@@ -91,7 +78,7 @@ const Hero = () => {
           </p>
 
           {/* Links */}
-          <div className="animate-in-delay-3 flex items-center justify-center gap-3 pt-2">
+          <div className="animate-in-delay-3 flex items-center justify-center gap-3 pt-2 pointer-events-auto">
             {[
               { href: "https://github.com/shrishantrh", icon: Github, label: "GitHub" },
               { href: "https://linkedin.com/in/shrishanth", icon: Linkedin, label: "LinkedIn" },
@@ -123,7 +110,7 @@ const Hero = () => {
         {/* Scroll indicator */}
         <button 
           onClick={scrollToAbout} 
-          className="absolute -bottom-20 left-1/2 -translate-x-1/2 p-2 text-muted-foreground/50 hover:text-muted-foreground transition-all duration-300 hover:-translate-y-1" 
+          className="absolute -bottom-20 left-1/2 -translate-x-1/2 p-2 text-muted-foreground/50 hover:text-muted-foreground transition-all duration-300 hover:-translate-y-1 pointer-events-auto" 
           aria-label="Scroll to content"
         >
           <ArrowDown size={20} className="animate-bounce" />
