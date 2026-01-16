@@ -2,7 +2,7 @@ import FadeIn from "./FadeIn";
 
 const About = () => {
   return (
-    <section id="about" className="section-spacing subtle-border">
+    <section id="about" className="section-spacing">
       <div className="container-narrow">
         <FadeIn>
           <h2 className="section-title">About</h2>

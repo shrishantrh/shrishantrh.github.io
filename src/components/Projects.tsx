@@ -1,6 +1,7 @@
 import { ArrowUpRight, Award } from "lucide-react";
 import FadeIn from "./FadeIn";
 import jvalaLogo from "@/assets/logos/jvala.png";
+import charcotLogo from "@/assets/logos/charcot.png";
 
 const Projects = () => {
   const projects = [
@@ -12,6 +13,15 @@ const Projects = () => {
       award: "Secured $20K+ backing from 1517 Fund",
       tech: ["AI/ML", "Healthcare", "React Native"],
       logo: jvalaLogo
+    },
+    {
+      name: "Charcot",
+      tagline: "AI-powered real-time psychiatric diagnostic copilot",
+      description: "Multimodal clinical support platform that analyzes live patient interviews using speech, facial behavior, and nonverbal cues to surface differential diagnoses, red flags, and follow-up prompts during sessions. Built with privacy-first, browser-based ML for in-room use by psychiatrists.",
+      link: "https://jvala.tech/#/charcot",
+      award: null,
+      tech: ["AI/ML", "Healthcare", "Multimodal Analysis", "React", "TensorFlow.js", "MediaPipe"],
+      logo: charcotLogo
     },
     {
       name: "Neurovision",
