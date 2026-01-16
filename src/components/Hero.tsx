@@ -23,7 +23,7 @@ const Hero = () => {
       </div>
       
       {/* Lanyard dangling from top */}
-      <Lanyard position={[0, 0, 30]} gravity={[0, -40, 0]} fov={20} />
+      <Lanyard position={[0, 0, 20]} />
       
       {/* Fade overlay at bottom */}
       <div 
