@@ -5,12 +5,10 @@ import Projects from "@/components/Projects";
 import Involvement from "@/components/Involvement";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
-import UnicornOverlay from "@/components/UnicornOverlay";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <UnicornOverlay />
       <Navigation />
       
       <main>
