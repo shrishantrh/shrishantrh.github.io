@@ -29,60 +29,64 @@ const Involvement = () => {
   ];
 
   return (
-    <section className="section-spacing subtle-border">
+    <section className="section-spacing">
       <div className="container-narrow">
         <FadeIn>
           <h2 className="section-title">Involvement</h2>
         </FadeIn>
 
-        <div className="space-y-1">
+        <div className="space-y-3">
           {activities.map((activity, index) => (
-            <FadeIn key={index} delay={index * 100}>
+            <FadeIn key={index} delay={index * 80}>
               {activity.link ? (
                 <a
                   href={activity.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card-hover glow-hover group block"
+                  className="clay-card-sm block p-5 group hover:scale-[1.01] transition-transform duration-300"
                 >
-                  <h3 className="text-base text-foreground font-medium group-hover:text-primary transition-colors duration-300">
-                    {activity.role}
-                  </h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
-                    {activity.logo && (
-                      <img 
-                        src={activity.logo} 
-                        alt={`${activity.org} logo`} 
-                        className="w-3.5 h-3.5 object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
-                      />
-                    )}
-                    <span className="group-hover:text-foreground transition-colors duration-300 inline-flex items-center gap-1">
-                      {activity.org}
-                      <ArrowUpRight size={10} className="opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
-                    </span>
+                  <div className="relative z-10">
+                    <h3 className="text-base text-foreground font-medium group-hover:text-primary transition-colors duration-300">
+                      {activity.role}
+                    </h3>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
+                      {activity.logo && (
+                        <img 
+                          src={activity.logo} 
+                          alt={`${activity.org} logo`} 
+                          className="w-3.5 h-3.5 object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
+                        />
+                      )}
+                      <span className="group-hover:text-foreground transition-colors duration-300 inline-flex items-center gap-1">
+                        {activity.org}
+                        <ArrowUpRight size={10} className="opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">
+                      {activity.description}
+                    </p>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">
-                    {activity.description}
-                  </p>
                 </a>
               ) : (
-                <div className="card-hover glow-hover group">
-                  <h3 className="text-base text-foreground font-medium group-hover:text-primary transition-colors duration-300">
-                    {activity.role}
-                  </h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
-                    {activity.logo && (
-                      <img 
-                        src={activity.logo} 
-                        alt={`${activity.org} logo`} 
-                        className="w-3.5 h-3.5 object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
-                      />
-                    )}
-                    <span>{activity.org}</span>
+                <div className="clay-card-sm p-5 group">
+                  <div className="relative z-10">
+                    <h3 className="text-base text-foreground font-medium">
+                      {activity.role}
+                    </h3>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
+                      {activity.logo && (
+                        <img 
+                          src={activity.logo} 
+                          alt={`${activity.org} logo`} 
+                          className="w-3.5 h-3.5 object-contain opacity-60"
+                        />
+                      )}
+                      <span>{activity.org}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {activity.description}
+                    </p>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">
-                    {activity.description}
-                  </p>
                 </div>
               )}
             </FadeIn>

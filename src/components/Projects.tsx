@@ -44,17 +44,17 @@ const Projects = () => {
   ];
 
   return (
-    <section className="section-spacing subtle-border">
+    <section className="section-spacing">
       <div className="container-narrow">
         <FadeIn>
           <h2 className="section-title">Projects</h2>
         </FadeIn>
 
-        <div className="space-y-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, index) => (
-            <FadeIn key={index} delay={index * 100}>
-              <div className="card-hover glow-hover group">
-                <div className="flex items-start justify-between gap-4 mb-2">
+            <FadeIn key={index} delay={index * 80}>
+              <div className="clay-card p-5 group hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="flex items-start justify-between gap-3 mb-2 relative z-10">
                   <div className="flex-1">
                     {project.link ? (
                       <a
@@ -67,7 +67,7 @@ const Projects = () => {
                           <img 
                             src={project.logo} 
                             alt={`${project.name} logo`} 
-                            className="w-4 h-4 object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
+                            className="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-all duration-300"
                           />
                         )}
                         <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors duration-300">
@@ -76,41 +76,46 @@ const Projects = () => {
                         <ArrowUpRight size={14} className="opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300 text-muted-foreground" />
                       </a>
                     ) : (
-                      <h3 className="text-base font-medium text-foreground inline-flex items-center gap-2 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-base font-medium text-foreground inline-flex items-center gap-2">
                         {project.logo && (
                           <img 
                             src={project.logo} 
                             alt={`${project.name} logo`} 
-                            className="w-4 h-4 object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
+                            className="w-5 h-5 object-contain opacity-70"
                           />
                         )}
                         {project.name}
                       </h3>
                     )}
-                    <p className="text-xs text-muted-foreground">{project.tagline}</p>
+                    <p className="text-xs text-muted-foreground font-mono mt-0.5">{project.tagline}</p>
                   </div>
                 </div>
                 
                 {project.award && (
-                  <div className="inline-flex items-center gap-1.5 text-xs text-primary bg-primary/10 px-2.5 py-1 rounded-full mb-2 border border-primary/20">
-                    <Award size={12} />
-                    {project.award}
+                  <div className="clay-pill inline-flex items-center gap-1.5 text-xs text-primary px-3 py-1.5 mb-3 w-fit relative z-10">
+                    <Award size={12} className="relative z-10" />
+                    <span className="relative z-10">{project.award}</span>
                   </div>
                 )}
                 
-                <p className="text-sm text-muted-foreground leading-relaxed mb-3 group-hover:text-foreground/70 transition-colors duration-300">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4 group-hover:text-foreground/70 transition-colors duration-300 flex-1 relative z-10">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1.5 relative z-10">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-2 py-0.5 rounded-full bg-secondary/80 text-muted-foreground border border-border/50 transition-all duration-300 group-hover:border-border group-hover:bg-secondary"
+                      className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-secondary/80 text-muted-foreground border border-border/50 transition-all duration-300 group-hover:border-border"
                     >
                       {tech}
                     </span>
                   ))}
+                </div>
+
+                {/* ASCII decoration */}
+                <div className="absolute top-3 right-4 font-mono text-[9px] text-muted-foreground/15 tracking-widest">
+                  [{String(index).padStart(2, '0')}]
                 </div>
               </div>
             </FadeIn>

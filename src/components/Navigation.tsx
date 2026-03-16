@@ -11,7 +11,6 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      // Track active section
       const sections = ['about', 'experience', 'projects', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -46,30 +45,32 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'bg-background/80 backdrop-blur-xl border-b border-border/50' : ''
+      isScrolled ? 'py-2' : 'py-3'
     }`}>
-      <div className="max-w-3xl mx-auto px-6 py-3">
-        <div className="flex items-center justify-between">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className={`flex items-center justify-between transition-all duration-500 ${
+          isScrolled ? 'clay-card-sm px-4 py-2' : ''
+        }`}>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-display font-semibold text-foreground hover:text-primary transition-colors duration-300 text-sm"
+            className="font-display font-semibold text-foreground hover:text-primary transition-colors duration-300 text-sm relative z-10"
           >
             SH
           </button>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-1 relative z-10">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-xs px-3 py-1.5 rounded-full transition-all duration-300 uppercase tracking-wide ${
+                className={`text-xs px-3 py-1.5 rounded-full transition-all duration-300 font-mono tracking-wide ${
                   activeSection === item.id 
-                    ? 'text-foreground bg-secondary' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                    ? 'text-foreground clay-pill' 
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                {item.label}
+                <span className="relative z-10">{item.label}</span>
               </button>
             ))}
             <div className="ml-2">
@@ -78,7 +79,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 md:hidden relative z-10">
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -98,7 +99,7 @@ const Navigation = () => {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`block w-full text-left py-2 px-3 rounded-lg transition-all duration-300 ${
+              className={`block w-full text-left py-2 px-3 rounded-lg transition-all duration-300 font-mono text-sm ${
                 activeSection === item.id 
                   ? 'text-foreground bg-secondary' 
                   : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
