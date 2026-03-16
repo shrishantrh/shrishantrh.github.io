@@ -46,22 +46,22 @@ const Experience = () => {
   ];
 
   return (
-    <section className="section-spacing subtle-border">
+    <section className="section-spacing">
       <div className="container-narrow">
         <FadeIn>
           <h2 className="section-title">Experience</h2>
         </FadeIn>
 
-        <div className="space-y-1">
+        <div className="space-y-3">
           {experiences.map((exp, index) => (
-            <FadeIn key={index} delay={index * 100}>
+            <FadeIn key={index} delay={index * 80}>
               <a
                 href={exp.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-hover glow-hover group block"
+                className="clay-card-sm block p-5 group hover:scale-[1.01] transition-transform duration-300"
               >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2 relative z-10">
                   <div className="flex-1">
                     <h3 className="text-base font-medium text-foreground group-hover:text-primary transition-colors duration-300">
                       {exp.role}
@@ -78,13 +78,13 @@ const Experience = () => {
                       </span>
                     </div>
                   </div>
-                  <span className="text-xs text-muted-foreground md:text-right whitespace-nowrap">
+                  <span className="text-xs text-muted-foreground md:text-right whitespace-nowrap font-mono">
                     {exp.period}
                     <span className="hidden md:inline"> · </span>
                     <span className="block md:inline">{exp.location}</span>
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300">
+                <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/70 transition-colors duration-300 relative z-10">
                   {exp.description}
                 </p>
               </a>
