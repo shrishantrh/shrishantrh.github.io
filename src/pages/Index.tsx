@@ -3,6 +3,7 @@ import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Involvement from "@/components/Involvement";
+import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import GridBackground from "@/components/GridBackground";
@@ -35,6 +36,11 @@ const Index = () => {
         <AsciiDivider label=".involvement" />
         <section id="involvement">
           <Involvement />
+        </section>
+        
+        <AsciiDivider label=".blog" />
+        <section id="blog">
+          <Blog />
         </section>
         
         <AsciiDivider label=".contact" />

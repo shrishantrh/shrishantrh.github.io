@@ -11,7 +11,7 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      const sections = ['about', 'experience', 'projects', 'contact'];
+      const sections = ['about', 'experience', 'projects', 'blog', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -32,6 +32,7 @@ const Navigation = () => {
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
+    { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -93,7 +94,7 @@ const Navigation = () => {
 
         {/* Mobile nav */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-48 opacity-100 pt-4 pb-2' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-64 opacity-100 pt-4 pb-2' : 'max-h-0 opacity-0'
         }`}>
           {navItems.map((item) => (
             <button
