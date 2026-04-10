@@ -53,7 +53,7 @@ const BlogPost1 = () => {
             </p>
 
             <p>
-              But this semester, sitting in a technology and management classroom for the first time, I started realizing something: the stuff we were covering — things like organizational design, decision-making, how technology and business strategy intersect — was the exact infrastructure I had been improvising my way through for the past year without knowing it had a name.
+              But this semester, sitting in a technology and management classroom for the first time, I started realizing something: the stuff we were covering, things like organizational design, decision-making, how technology and business strategy intersect, was the exact infrastructure I had been improvising my way through for the past year without knowing it had a name.
             </p>
 
             <p>
