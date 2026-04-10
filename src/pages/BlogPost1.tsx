@@ -49,27 +49,27 @@ const BlogPost1 = () => {
             </p>
 
             <p>
-              But this semester, sitting in a technology and management classroom for the first time, I started realizing something: the stuff we were covering, things like organizational design, decision-making, how technology and business strategy intersect, was the exact infrastructure I had been improvising my way through for the past year without knowing it had a name.
+              But this semester, sitting in a technology and management auditorium for the first time, I started realizing something. The stuff we were covering, things like organizational design, decision making, how technology and business strategy intersect, was the exact infrastructure I had been improvising my way through for the past year without knowing it had a name.
             </p>
 
             <p>
-              I think this is a strange thing to experience. You're in a lecture about how technology strategy needs to align with organizational goals, and you're nodding along thinking <em className="italic">I've been making these calls by gut</em>. Not wrong, necessarily. But without a framework, you can't really stress test your intuitions. You just do things and hope they’re right.
+              I think this is a strange thing to experience. You're in a lecture about how technology strategy needs to align with organizational goals, and you're nodding along thinking <em className="italic">I've been making these calls by gut</em>. Not wrong, necessarily. But without a framework, you can't really stress test your intuitions. You just do things and hope they’re right. One session that stuck with me was T&amp;M alumni (now at Dude Perfect and Laso) talked about leading vs lagging indicators as a way to avoid micromanagement. The idea is simple. If you establish the right metrics upfront, you don’t need to hover over your team because everyone already knows what success looks like. I had never heard it framed that way, but I had already been struggling with that problem without realizing it.
             </p>
 
             <p>
-              At Jvala, our founding team has a CEO, CTO, a COO, and a CGO. We divide responsibilities fast because we have to. But dividing responsibilities is not the same as building an organization I learned. One of the most important things I started to understand this semester is that how you structure decisions (who owns what, where accountability lives, how you handle disagreement) matters as much as the product itself. A broken internal structure will kill a company just as surely as a product nobody wants.
+              At Jvala, our founding team has a CEO, CTO, a COO, and a CGO. We divide responsibilities fast because we have to. But dividing responsibilities is not the same as building an organization, I learned. One of the most important things I started to understand this semester is that how you structure decisions (who owns what, where accountability lives, how you handle disagreement) matters as much as the product itself. A broken internal structure will kill a company just as surely as a product nobody wants.
             </p>
 
             <p>
-              We've felt this firsthand. When you're four people moving at startup speed, alignment feels easy because everyone's in the same room. But as you grow, that changes. The conversations you didn't formalize become the gaps you fall into. The technology decisions you made without documenting your reasoning become technical debt.
+              We've felt this firsthand. When you're four people moving at startup speed, alignment feels easy because everyone is in the same room. But as you grow, that changes. The conversations you didn't formalize could become the gaps you fall into. The technology decisions you made without documenting your reasoning become technical debt. Another thing from class that I will remember was Gorick Ng’s three C’s: competence, commitment, and compatibility. Most early team conflicts aren’t about competence really. They are about compatibility and commitment mismatches that nobody named early enough.
             </p>
 
             <p>
-              What this course pushed me to think about is how the best technology leaders aren't just the best engineers or the best product thinkers. In reality, they are the people who understand the system they're building. The product, yes, but also the team, the incentives, the information flows, the external environment. Technology doesn't exist in a vacuum. It gets built by organizations, and deployed into markets, and shaped by the people who use it. Every layer of that system has to be managed deliberately.
+              What this course pushed me to think about is how the best technology leaders aren't just the best engineers or the best product thinkers. In reality, they are the people who truly understand the system they're building. The product, yes, but also the team, the incentives, the information flows, the external environment, etc. Technology doesn't exist in a vacuum. It gets built by organizations, and deployed into markets, and shaped by the people who use it. Every layer of that system has to be managed deliberately.
             </p>
 
             <p>
-              I came into this course thinking it would be a box to check on the way to the T&M minor. But now I’m thinking it might be the most practically useful thing I've taken so far. Not because every lecture mapped directly to a decision I needed to make, but because it gave me language for problems I'd already encountered. That's what good education does. It doesn't just prepare you for what's ahead, it makes sense of what you've already been through.
+              I came into this course thinking it would be a box to check on the way to the T&amp;M minor. But now I’m thinking it might be the most practically useful thing I've taken so far. Not because every panel discussion mapped directly to a decision I needed to make, but because it gave me clarity and understanding for problems I'd already encountered. That's what good education does. It doesn't just prepare you for what's ahead, it makes sense of what you've already been through.
             </p>
 
             <p>
