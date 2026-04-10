@@ -61,7 +61,7 @@ const BlogPost1 = () => {
             </p>
 
             <p>
-              At Jvala, our founding team has a CEO, CTO, a COO, and a CGO. We divide responsibilities fast because we have to. But dividing responsibilities is not the same as building an organization — I learned. One of the most important things I started to understand this semester is that how you structure decisions (who owns what, where accountability lives, how you handle disagreement) matters as much as the product itself. A broken internal structure will kill a company just as surely as a product nobody wants.
+              At Jvala, our founding team has a CEO, CTO, a COO, and a CGO. We divide responsibilities fast because we have to. But dividing responsibilities is not the same as building an organization, I learned. One of the most important things I started to understand this semester is that how you structure decisions (who owns what, where accountability lives, how you handle disagreement) matters as much as the product itself. A broken internal structure will kill a company just as surely as a product nobody wants.
             </p>
 
             <p>
