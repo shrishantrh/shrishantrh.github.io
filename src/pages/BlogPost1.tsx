@@ -45,11 +45,7 @@ const BlogPost1 = () => {
             </p>
 
             <p>
-              I'm a freshman at the University of Illinois, and I co-founded a company called{" "}
-              <a href="https://jvala.tech" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
-                Jvala
-              </a>
-              , the first AI-native platform that helps people with chronic conditions predict and track their flares before they happen. We have a live iOS app, backing from 1517 Fund, and we won UIUC's Startup Weekend. By most metrics, things are going well.
+              I'm a freshman at the University of Illinois, and I co-founded a company called Jvala, the first AI-native platform that helps people with chronic conditions predict and track their flares before they happen. We have a live iOS app, backing from 1517 Fund, and we won UIUC's Startup Weekend. By most metrics, things are going well.
             </p>
 
             <p>
@@ -57,11 +53,11 @@ const BlogPost1 = () => {
             </p>
 
             <p>
-              I think this is a strange thing to experience. You're in a lecture about how technology strategy needs to align with organizational goals, and you're nodding along thinking <em className="text-foreground/70 italic">I've been making these calls by gut</em>. Not wrong, necessarily. But without a framework, you can't really stress test your intuitions. You just do things and hope they're right.
+              I think this is a strange thing to experience. You're in a lecture about how technology strategy needs to align with organizational goals, and you're nodding along thinking <em className="italic">I've been making these calls by gut</em>. Not wrong, necessarily. But without a framework, you can't really stress test your intuitions. You just do things and hope they’re right.
             </p>
 
             <p>
-              At Jvala, our founding team has a CEO, CTO, a COO, and a CGO. We divide responsibilities fast because we have to. But dividing responsibilities is not the same as building an organization, I learned. One of the most important things I started to understand this semester is that how you structure decisions (who owns what, where accountability lives, how you handle disagreement) matters as much as the product itself. A broken internal structure will kill a company just as surely as a product nobody wants.
+              At Jvala, our founding team has a CEO, CTO, a COO, and a CGO. We divide responsibilities fast because we have to. But dividing responsibilities is not the same as building an organization I learned. One of the most important things I started to understand this semester is that how you structure decisions (who owns what, where accountability lives, how you handle disagreement) matters as much as the product itself. A broken internal structure will kill a company just as surely as a product nobody wants.
             </p>
 
             <p>
@@ -69,11 +65,11 @@ const BlogPost1 = () => {
             </p>
 
             <p>
-              What this course pushed me to think about is how the best technology leaders aren't just the best engineers or the best product thinkers. In reality, they are the people who understand the <em className="text-foreground/70 italic">system</em> they're building. The product, yes, but also the team, the incentives, the information flows, the external environment. Technology doesn't exist in a vacuum. It gets built by organizations, and deployed into markets, and shaped by the people who use it. Every layer of that system has to be managed deliberately.
+              What this course pushed me to think about is how the best technology leaders aren't just the best engineers or the best product thinkers. In reality, they are the people who understand the system they're building. The product, yes, but also the team, the incentives, the information flows, the external environment. Technology doesn't exist in a vacuum. It gets built by organizations, and deployed into markets, and shaped by the people who use it. Every layer of that system has to be managed deliberately.
             </p>
 
             <p>
-              I came into this course thinking it would be a box to check on the way to the T&M minor. But now I'm thinking it might be the most practically useful thing I've taken so far. Not because every lecture mapped directly to a decision I needed to make, but because it gave me language for problems I'd already encountered. That's what good education does. It doesn't just prepare you for what's ahead — it makes sense of what you've already been through.
+              I came into this course thinking it would be a box to check on the way to the T&M minor. But now I’m thinking it might be the most practically useful thing I've taken so far. Not because every lecture mapped directly to a decision I needed to make, but because it gave me language for problems I'd already encountered. That's what good education does. It doesn't just prepare you for what's ahead, it makes sense of what you've already been through.
             </p>
 
             <p>
