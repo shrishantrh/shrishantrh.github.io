@@ -6,14 +6,14 @@ const blogPosts = [
   {
     title: "You Are What You Won't Do",
     excerpt: "I just finished freshman year. I have basically no professional reputation yet. So when someone starts talking about protecting your personal brand, my first instinct is to tune out a little.",
-    date: "May 2026",
+    date: "May 11, 2026",
     slug: "/blog/you-are-what-you-wont-do",
     tags: ["Personal Brand", "Reflections"],
   },
   {
     title: "The Infrastructure No One Talks About",
     excerpt: "Most people think building a startup means having a great idea. I used to think that too, until I started actually building one.",
-    date: "April 2025",
+    date: "April 10, 2026",
     slug: "/blog/the-infrastructure-no-one-talks-about",
     tags: ["Startups", "Technology & Management"],
   },
