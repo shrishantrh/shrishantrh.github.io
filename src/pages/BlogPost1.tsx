@@ -30,7 +30,7 @@ const BlogPost1 = () => {
             <div className="flex items-center gap-3 mb-6">
               <span className="font-mono text-xs text-muted-foreground tracking-wider uppercase">Blog</span>
               <span className="text-muted-foreground/30">•</span>
-              <time className="font-mono text-xs text-muted-foreground tracking-wider">April 2025</time>
+              <time className="font-mono text-xs text-muted-foreground tracking-wider">April 10, 2026</time>
             </div>
             <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground leading-tight mb-4">
               The Infrastructure No One Talks About
