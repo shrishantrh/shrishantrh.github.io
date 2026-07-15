@@ -1,5 +1,59 @@
 import { Mail, ArrowUpRight } from "lucide-react";
 import FadeIn from "./FadeIn";
+import MouseImageTrail from "./MouseImageTrail";
+
+const trailShapes = [
+  "circle",
+  "square",
+  "plus",
+  "cross",
+  "triangle",
+  "ring",
+  "dot-grid",
+  "bracket-l",
+  "bracket-r",
+  "diamond",
+  "line",
+  "chevron",
+];
+
+const shapeToSvg = (shape: string) => {
+  const stroke = "hsl(220 60% 50%)";
+  const inner = (() => {
+    switch (shape) {
+      case "circle":
+        return `<circle cx="24" cy="24" r="14" fill="none" stroke="${stroke}" stroke-width="2"/>`;
+      case "square":
+        return `<rect x="12" y="12" width="24" height="24" fill="none" stroke="${stroke}" stroke-width="2"/>`;
+      case "plus":
+        return `<path d="M24 10v28M10 24h28" stroke="${stroke}" stroke-width="2" stroke-linecap="round"/>`;
+      case "cross":
+        return `<path d="M14 14l20 20M34 14L14 34" stroke="${stroke}" stroke-width="2" stroke-linecap="round"/>`;
+      case "triangle":
+        return `<path d="M24 10l14 26H10z" fill="none" stroke="${stroke}" stroke-width="2" stroke-linejoin="round"/>`;
+      case "ring":
+        return `<circle cx="24" cy="24" r="10" fill="${stroke}"/><circle cx="24" cy="24" r="6" fill="hsl(40 20% 98%)"/>`;
+      case "dot-grid":
+        return `<g fill="${stroke}"><circle cx="14" cy="14" r="2"/><circle cx="24" cy="14" r="2"/><circle cx="34" cy="14" r="2"/><circle cx="14" cy="24" r="2"/><circle cx="24" cy="24" r="2"/><circle cx="34" cy="24" r="2"/><circle cx="14" cy="34" r="2"/><circle cx="24" cy="34" r="2"/><circle cx="34" cy="34" r="2"/></g>`;
+      case "bracket-l":
+        return `<path d="M18 10h-8v28h8" fill="none" stroke="${stroke}" stroke-width="2"/>`;
+      case "bracket-r":
+        return `<path d="M30 10h8v28h-8" fill="none" stroke="${stroke}" stroke-width="2"/>`;
+      case "diamond":
+        return `<path d="M24 10l14 14-14 14-14-14z" fill="none" stroke="${stroke}" stroke-width="2"/>`;
+      case "line":
+        return `<path d="M10 24h28" stroke="${stroke}" stroke-width="2" stroke-linecap="round"/>`;
+      case "chevron":
+        return `<path d="M14 16l10 10 10-10M14 26l10 10 10-10" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+      default:
+        return "";
+    }
+  })();
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'>${inner}</svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+};
+
+const trailImages = trailShapes.map(shapeToSvg);
 
 const Contact = () => {
   return (
@@ -42,13 +96,21 @@ const Contact = () => {
         </FadeIn>
         
         <FadeIn delay={200}>
-          <div className="flex items-center gap-4">
-            <div className="flex-1 h-px bg-border/50" />
-            <p className="text-xs text-muted-foreground font-mono">
-              © {new Date().getFullYear()} Shrishant Hattarki
-            </p>
-            <div className="flex-1 h-px bg-border/50" />
-          </div>
+          <MouseImageTrail
+            images={trailImages}
+            renderImageBuffer={35}
+            rotationRange={25}
+            imageClassName="h-10 w-10"
+            className="h-24 rounded-xl"
+          >
+            <div className="flex items-center gap-4 h-full">
+              <div className="flex-1 h-px bg-border/50" />
+              <p className="text-xs text-muted-foreground font-mono select-none">
+                © {new Date().getFullYear()} Shrishant Hattarki
+              </p>
+              <div className="flex-1 h-px bg-border/50" />
+            </div>
+          </MouseImageTrail>
         </FadeIn>
       </div>
     </section>
