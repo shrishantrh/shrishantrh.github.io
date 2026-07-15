@@ -49,9 +49,6 @@ const Contact = () => {
             </p>
             <div className="flex-1 h-px bg-border/50" />
           </div>
-          <p className="text-center text-[10px] text-muted-foreground/60 font-mono mt-4">
-            pnpm dlx shadcn add @skiper-ui/skiper18
-          </p>
         </FadeIn>
       </div>
     </section>
