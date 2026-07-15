@@ -8,14 +8,12 @@ import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import GridBackground from "@/components/GridBackground";
 import AsciiDivider from "@/components/AsciiDivider";
-import ScrollStroke from "@/components/ScrollStroke";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <GridBackground />
       <Navigation />
-      <ScrollStroke />
       
       <main className="relative z-10">
         <Hero />
