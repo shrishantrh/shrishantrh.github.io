@@ -5,6 +5,7 @@ import Projects from "@/components/Projects";
 import Involvement from "@/components/Involvement";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
+import Skiper19 from "@/components/Skiper19";
 import Navigation from "@/components/Navigation";
 import GridBackground from "@/components/GridBackground";
 import AsciiDivider from "@/components/AsciiDivider";
@@ -44,6 +45,7 @@ const Index = () => {
         </section>
         
         <AsciiDivider label=".contact" />
+        <Skiper19 />
         <section id="contact">
           <Contact />
         </section>
